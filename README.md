@@ -12,3 +12,10 @@ Voici une liste d'applications de contrôle parental :
 
 ---
 
+## Fonctionnement
+
+1. **Paramétrages parental** : choix d'un temps maximum d'utilisation par jour, horaires de repos, applis autorisées, ...
+2. **Blocage automatique** : une fois le temps écoulé, l'accès est verrouillé et nécessite un code parental.
+3. **Surveillance** : rapports d'usage envoyés au parents, localisation en temps réels, lecture d'écran...
+
+## 
