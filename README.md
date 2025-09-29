@@ -8,15 +8,14 @@ Voici une liste d'applications de contrôle parental :
 - *Net Nanny*
 - *Kaspesky Safe Kids*
 - *Microsoft Safety*
-- ...
 
 ---
 
 ## Fonctionnement
 
-1. **Paramétrages parental** : choix d'un temps maximum d'utilisation par jour, horaires de repos, applis autorisées, ...
-2. **Blocage automatique** : une fois le temps écoulé, l'accès est verrouillé et nécessite un code parental.
-3. **Surveillance** : rapports d'usage envoyés au parents, localisation en temps réels, lecture d'écran...
+- **Paramétrages parental** : choix d'un temps maximum d'utilisation par jour, horaires de repos, applis autorisées, ...
+- **Blocage automatique** : une fois le temps écoulé, l'accès est verrouillé et nécessite un code parental.
+- **Surveillance** : rapports d'usage envoyés au parents, localisation en temps réels, lecture d'écran...
 
 ---
 
@@ -35,6 +34,6 @@ Voici une liste d'applications de contrôle parental :
 
 ## Point de vigilance pour les parents
 
-- Protéger les parametres par un mot de passe connu uniquemebt des adultes
-- Mettre à jour régulièrement l'appareil pour corriger les failles
-- Vérififer si un 2e compte ou des pplis inconnus sont installés
+- **Protéger** les parametres par un mot de passe connu uniquemebt des adultes
+- **Mettre à jour** régulièrement l'appareil pour corriger les failles
+- **Vérififer** si un 2e compte ou des pplis inconnus sont installés
