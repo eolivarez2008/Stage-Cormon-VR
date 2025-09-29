@@ -44,4 +44,8 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 | Redémarrage en mode “Safe Mode”      | Sur Android, démarrer l’appareil en Safe Mode (maintenir le bouton d’alimentation > « Redémarrer »).        | Les applications tierces sont désactivées, y compris celles qui appliquent les restrictions. |
 | Utilisation de services cloud pour l’accès à distance | Accès à un ordinateur ou une tablette via des plateformes comme TeamViewer ou Chrome Remote Desktop. | Permet d’utiliser des applis sur un appareil non restreint depuis le téléphone. |
 
+## Applications tierces
 
+- [App Ops](https://appops.rikka.app/)
+- [Freedom](https://freedom.to/freedom-for-android)
+- [StayFocused](https://www.stayfocusd.com/)
