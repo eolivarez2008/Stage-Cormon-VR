@@ -6,7 +6,7 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 - *Family Link*
 - *Qustodio*
 - *Net Nanny*
-- *Kaspesky Safe Kids*
+- *Kaspersky Safe Kids*
 - *Microsoft Safety*
 
 ---
@@ -41,6 +41,6 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 
 - [Google - Family Link](https://families.google/familylink/)
 - [Qustodio](https://www.qustodio.com)
-- [Net Nanny](https://www.natnanny.com)
-- [Kapersky Safe Kids](https://www.kapersky.fr/safe-kids)
+- [Net Nanny](https://www.netnanny.com)
+- [Kaspersky Safe Kids](https://www.kaspersky.fr/safe-kids)
 - [Microsoft Family Safety](https://www.microsoft.com/fr-fr/microsoft-365/family-safety)
