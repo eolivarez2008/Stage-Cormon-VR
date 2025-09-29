@@ -21,27 +21,13 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 
 ## Contournement fréquents
 
-| Avec les parents | autres |
-|----------|-------------|
-|
-
-- Changer l'heure du système : modifier l'heure pour *tromper* le compteur
-- Créer un second compte utilisateur ou outiliser le compte invité
-- Désinstaller l'application de contrôle parental si elle n'est pas protégée d'un mot de passe
-- Réinitialiser l'appareil pour effacer les restrictions
-- Utiliser un autre appareil (ordinateur, tablette, autre téléphone,...)
-- Mode avion / blocage du réseau : certains système cessent de fonctionner sans connexion internet
-- Applications masquées ou clones d'application téléchargées pour accèder aux réseaux sociaux sans être détectées.
-- Navigateur alternatif pour contourner les blocages de sites web.
-- Faire un enregistrement vidéo de l'écran au momant où le parent rentre son mot de passe
-| Enregistrer une vidéo de l'écran au moment où le parent saisit son mot de passe | Changer l'heure du système pour tromper le compteur |
-| Emprunter ou demander le code parental | Créer un second compte utilisateur ou utiliser le compte invité |
-| Donner temporairement l'accès au parent pour débloquer une app | Désinstaller l'application de contrôle parental si elle n'est pas protégée par un mot de passe |
-| Montrer le code pour contourner ponctuellement la restriction | Réinitialiser l'appareil pour effacer les restrictions |
-| — | Utiliser un autre appareil (ordinateur, tablette, téléphone d'un ami) |
-| — | Activer le mode avion / bloquer la connexion réseau (certains contrôles nécessitent Internet) |
-| — | Installer des applications masquées ou des clones d'applications pour accéder aux réseaux sociaux |
-| — | Utiliser un navigateur alternatif ou un VPN pour contourner le filtrage web |
+| Avec les parents | Systèmes | Autres |
+|--|--|--|
+| Enregistrer une vidéo de l'écran au moment où le parent saisit son mot de passe | Changer l'heure du système pour tromper le compteur | Utiliser un autre appareil (ordinateur, tablette, téléphone d'un ami) |
+| Emprunter ou demander le code parental | Créer un second compte utilisateur ou utiliser le compte invité | Utiliser un navigateur alternatif ou un VPN pour contourner le filtrage web |
+| Négocier, comprendre les inquiétude des parents et proposer une autre solution | Désinstaller l'application de contrôle parental si elle n'est pas protégée par un mot de passe | Installer des applications masquées ou des clones d'applications pour accéder aux réseaux sociaux |
+|  | Réinitialiser l'appareil pour effacer les restrictions | |
+|  | Activer le mode avion / bloquer la connexion réseau (certains contrôles nécessitent Internet) ||
 
 ---
 
