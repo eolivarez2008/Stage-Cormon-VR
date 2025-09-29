@@ -4,11 +4,12 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 
 #### Voici une liste d'applications de contrôle parental :
 
-- *Family Link*
-- *Qustodio*
-- *Net Nanny*
-- *Kaspersky Safe Kids*
-- *Microsoft Safety*
+
+- [Google Family Link](https://families.google/familylink/)
+- [Qustodio](https://www.qustodio.com)
+- [Net Nanny](https://www.netnanny.com)
+- [Kaspersky Safe Kids](https://www.kaspersky.fr/safe-kids)
+- [Microsoft Family Safety](https://www.microsoft.com/fr-fr/microsoft-365/family-safety)
 
 #### Fonctionnement
 
@@ -27,13 +28,3 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 | Négocier, comprendre les inquiétude des parents et proposer une autre solution | Désinstaller l'application de contrôle parental si elle n'est pas protégée par un mot de passe | Installer des applications masquées ou des clones d'applications pour accéder aux réseaux sociaux |
 |  | Réinitialiser l'appareil pour effacer les restrictions | |
 |  | Activer le mode avion / bloquer la connexion réseau (certains contrôles nécessitent Internet) ||
-
----
-
-## Sources
-
-- [Google - Family Link](https://families.google/familylink/)
-- [Qustodio](https://www.qustodio.com)
-- [Net Nanny](https://www.netnanny.com)
-- [Kaspersky Safe Kids](https://www.kaspersky.fr/safe-kids)
-- [Microsoft Family Safety](https://www.microsoft.com/fr-fr/microsoft-365/family-safety)
