@@ -3,7 +3,7 @@
 Un sytème de restriction de temps d'écran fonctionne comme **une barrière logicielle** : il limite l'accès à un appareil ou à certaines applications après une durée définie par un parent. Ces sytèmes sont integrés dans les téléphones mais peuvent être ajoutés via des applications tierces.
 
 ##### Voici une liste d'applications de contrôle parental :
-- *Family Link* (google)
+- *Family Link*
 - *Qustodio*
 - *Net Nanny*
 - *Kaspesky Safe Kids*
@@ -40,3 +40,7 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 ## Sources
 
 - [Google - Family Link](https://families.google/familylink/)
+- [Qustodio](https://www.qustodio.com)
+- [Net Nanny](https://www.natnanny.com)
+- [Kapersky Safe Kids](https://www.kapersky.fr/safe-kids)
+- [Microsoft Family Safety](https://www.microsoft.com/fr-fr/microsoft-365/family-safety)
