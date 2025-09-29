@@ -13,13 +13,17 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 
 ## Fonctionnement
 
-- **Paramétrages parental** : choix d'un temps maximum d'utilisation par jour, horaires de repos, applis autorisées, ...
-- **Blocage automatique** : une fois le temps écoulé, l'accès est verrouillé et nécessite un code parental.
-- **Surveillance** : rapports d'usage envoyés au parents, localisation en temps réels, lecture d'écran...
+1. **Paramétrages parental** : choix d'un temps maximum d'utilisation par jour, horaires de repos, applis autorisées, ...
+2. **Blocage automatique** : une fois le temps écoulé, l'accès est verrouillé et nécessite un code parental.
+3. **Surveillance** : rapports d'usage envoyés au parents, localisation en temps réels, lecture d'écran...
 
 ---
 
 ## Contournement fréquents
+
+| Avec les parents | autres |
+|----------|-------------|
+|
 
 - Changer l'heure du système : modifier l'heure pour *tromper* le compteur
 - Créer un second compte utilisateur ou outiliser le compte invité
@@ -29,6 +33,7 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 - Mode avion / blocage du réseau : certains système cessent de fonctionner sans connexion internet
 - Applications masquées ou clones d'application téléchargées pour accèder aux réseaux sociaux sans être détectées.
 - Navigateur alternatif pour contourner les blocages de sites web.
+- Faire un enregistrement vidéo de l'écran au momant où le parent rentre son mot de passe
 
 ---
 
