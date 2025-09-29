@@ -19,7 +19,7 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 
 ---
 
-## Contournement fréquent
+## Contournement fréquents
 
 - Changer l'heure du système : modifier l'heure pour *tromper* le compteur
 - Créer un second compte utilisateur ou outiliser le compte invité
