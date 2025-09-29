@@ -19,7 +19,7 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 
 ---
 
-## Contournement fréquents
+## Contournement basiques
 
 | Avec les parents | Systèmes | Autres |
 |--|--|--|
@@ -28,3 +28,20 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 | Négocier, comprendre les inquiétude des parents et proposer une autre solution | Désinstaller l'application de contrôle parental si elle n'est pas protégée par un mot de passe | Installer des applications masquées ou des clones d'applications pour accéder aux réseaux sociaux |
 |  | Réinitialiser l'appareil pour effacer les restrictions | |
 |  | Activer le mode avion / bloquer la connexion réseau (certains contrôles nécessitent Internet) ||
+
+## Contournement complexes avec logiciels tiers
+
+| Nom du logiciel / technique          | Description                                                                                                 | Pourquoi il est efficace                                         |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| VPN (Virtual Private Network)        | Outils comme NordVPN, ExpressVPN, ou des VPN gratuits. Chiffrent la connexion et masquent l’IP.             | Masque le trafic réel ; certains contrôles se basent sur le réseau. |
+| Proxy HTTP/HTTPS                     | Serveurs intermédiaires (ex : ProxyFire, Squid) qui redirigent le trafic.                                  | Contourne les filtres DNS ou les bloqueurs d’URL.                 |
+| Utilisation d’un autre compte utilisateur | Créer un second profil sur Android/iOS ou se connecter à un autre compte Google/Apple.                      | Les paramètres de Temps d’écran sont souvent liés au compte, pas à l’appareil. |
+| Applications “unblocker”             | Apps comme *Freedom*, *Cold Turkey* (Android) ou des scripts personnalisés.                               | Bloque les restrictions applicatives en interférant avec le système d’exploitation. |
+| Réinitialisation du routeur / changement de DNS | Modifier l’adresse DNS sur le routeur (Google DNS, Cloudflare 1.1.1.1).                                 | Désactive les filtres de temps d’écran basés sur DNS.             |
+| Applications de contournement d’API  | Par exemple *AppBlock* ou *Offtime* sur Android qui offrent des options de "bypass".                       | Permet à l’utilisateur de désactiver temporairement les restrictions via un menu caché. |
+| Modification du système (root/jailbreak) | Rooter un appareil Android ou jailbreaker un iPhone.                                                        | Donne contrôle complet ; permet d’installer des applis non vérifiées. |
+| Utilisation de “screen‑time bypass” apps | Applications dédiées (ex : *Screen Time Bypass* pour Android) qui exploitent des vulnérabilités du système. | Ciblent spécifiquement les mécanismes de contrôle et les désactivent sans root/jailbreak. |
+| Redémarrage en mode “Safe Mode”      | Sur Android, démarrer l’appareil en Safe Mode (maintenir le bouton d’alimentation > « Redémarrer »).        | Les applications tierces sont désactivées, y compris celles qui appliquent les restrictions. |
+| Utilisation de services cloud pour l’accès à distance | Accès à un ordinateur ou une tablette via des plateformes comme TeamViewer ou Chrome Remote Desktop. | Permet d’utiliser des applis sur un appareil non restreint depuis le téléphone. |
+
+
