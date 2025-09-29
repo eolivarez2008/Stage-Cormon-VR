@@ -29,6 +29,8 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 |  | Réinitialiser l'appareil pour effacer les restrictions | |
 |  | Activer le mode avion / bloquer la connexion réseau (certains contrôles nécessitent Internet) ||
 
+---
+
 ## Contournement complexes avec logiciels tiers
 
 | Nom du logiciel / technique          | Description                                                                                                 | Pourquoi il est efficace                                         |
@@ -43,6 +45,8 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 | Utilisation de “screen‑time bypass” apps | Applications dédiées (ex : *Screen Time Bypass* pour Android) qui exploitent des vulnérabilités du système. | Ciblent spécifiquement les mécanismes de contrôle et les désactivent sans root/jailbreak. |
 | Redémarrage en mode “Safe Mode”      | Sur Android, démarrer l’appareil en Safe Mode (maintenir le bouton d’alimentation > « Redémarrer »).        | Les applications tierces sont désactivées, y compris celles qui appliquent les restrictions. |
 | Utilisation de services cloud pour l’accès à distance | Accès à un ordinateur ou une tablette via des plateformes comme TeamViewer ou Chrome Remote Desktop. | Permet d’utiliser des applis sur un appareil non restreint depuis le téléphone. |
+
+---
 
 ## Applications tierces
 
