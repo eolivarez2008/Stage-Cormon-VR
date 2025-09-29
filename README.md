@@ -9,9 +9,7 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 - *Kaspersky Safe Kids*
 - *Microsoft Safety*
 
----
-
-## Fonctionnement
+#### Fonctionnement
 
 1. **Paramétrages parental** : choix d'un temps maximum d'utilisation par jour, horaires de repos, applis autorisées, ...
 2. **Blocage automatique** : une fois le temps écoulé, l'accès est verrouillé et nécessite un code parental.
@@ -30,12 +28,6 @@ Un sytème de restriction de temps d'écran fonctionne comme **une barrière log
 |  | Activer le mode avion / bloquer la connexion réseau (certains contrôles nécessitent Internet) ||
 
 ---
-
-## Point de vigilance pour les parents
-
-- **Protéger** les parametres par un mot de passe connu uniquemebt des adultes
-- **Mettre à jour** régulièrement l'appareil pour corriger les failles
-- **Vérififer** si un 2e compte ou des pplis inconnus sont installés
 
 ## Sources
 
