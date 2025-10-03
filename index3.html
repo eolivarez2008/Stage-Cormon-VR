@@ -11,21 +11,26 @@
       <a-asset-item id="modele" src="/objects-glb/ROOM-LOW2.glb"></a-asset-item>
     </a-assets>
 
-    <!-- Modèle de la salle -->
-    <a-gltf-model src="#modele"
-                  position="0 -40 200"
-                  rotation="0 90 0"
-                  scale="100 100 100">
-    </a-gltf-model>
+      <A-entity rotation="0 0 0"
+            position="0 0 0"
+            rotate-model="speed:0.0002">
 
-    <!-- Sol -->
-    <a-box color="#808080" 
-          width="1000" 
-          height="0.5" 
-          depth="1000" 
-          position="-20.60854 -15.80231 40" 
-          scale="0.08 -1.06485 -0.12434">
-    </a-box>
+        <!-- Modèle de la salle -->
+        <a-gltf-model src="#modele"
+          position="0 -40 200"
+          rotation="0 90 0"
+          scale="100 100 100">
+        </a-gltf-model>
+        
+        <!-- Sol -->
+      <a-box color="#808080" 
+        width="1000" 
+        height="0.5" 
+        depth="1000" 
+        position="-20.60854 -15.80231 40" 
+        scale="0.08 -1.06485 -0.12434">
+      </a-box>
+    </A-entity>
 
     <!-- Caméra -->
     <a-camera position="0 1.6 0"></a-camera>

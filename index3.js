@@ -2,6 +2,7 @@ import "aframe";
 import * as THREE from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 
+// Composant HDRI : background fixe, envMap fixe
 AFRAME.registerComponent("hdr-env", {
   init: function () {
     const sceneEl = this.el.sceneEl;
@@ -11,24 +12,28 @@ AFRAME.registerComponent("hdr-env", {
       .setPath("/background/")
       .load("golden_gate_hills_4k.hdr", (texture) => {
         texture.mapping = THREE.EquirectangularReflectionMapping;
+        const pmremGenerator = new THREE.PMREMGenerator(sceneEl.renderer);
+        const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+        scene.environment = envMap;
 
-        // Utiliser l'HDRI comme environnement
-        scene.environment = texture;
-
-        // Créer une sphère "sky" qui affiche le HDRI
+        // Skybox fixe
         const geometry = new THREE.SphereGeometry(500, 60, 40);
-        geometry.scale(-1, 1, 1); // inverser pour que la texture soit visible de l'intérieur
-
+        geometry.scale(-1, 1, 1);
         const material = new THREE.MeshBasicMaterial({ map: texture });
-        this.sky = new THREE.Mesh(geometry, material);
-        scene.add(this.sky);
-      });
-  },
+        const sky = new THREE.Mesh(geometry, material);
+        scene.add(sky);
 
-  tick: function (time, deltaTime) {
-    if (this.sky) {
-      // faire tourner doucement autour de Y
-      this.sky.rotation.y += 0.0005 * deltaTime; 
-    }
+        texture.dispose();
+        pmremGenerator.dispose();
+      });
+  }
+});
+
+// Composant pour faire tourner le modèle
+AFRAME.registerComponent("rotate-model", {
+  schema: { speed: { default: 0.0002 } },
+  tick: function (_t, delta) {
+    const rot = this.el.object3D.rotation;
+    rot.y += this.data.speed * delta;
   }
 });
