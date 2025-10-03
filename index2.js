@@ -1,4 +1,4 @@
-// Javascript avec un fichier png pour index2.html
+// Javascript avec un fichier jpg pour index2.html
 
 import * as THREE from "three";
 import "aframe";
