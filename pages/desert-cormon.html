@@ -1,11 +1,9 @@
-<!-- Page web plein air avec texte cormon -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <title>A-Frame HDRI + TV Vidéo</title>
   <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-  <link rel="icon" href="./noir.jpg" />
   <script>
     if (window.AFRAME && AFRAME.THREE) {
       window.THREE = AFRAME.THREE;
@@ -16,10 +14,10 @@
   <a-scene hdr-env>
   
     <a-assets>
-      <a-asset-item id="modele" src="./objects-glb/cormon2.glb"></a-asset-item>
-      <a-asset-item id="tv" src="./objects-glb/tv.glb"></a-asset-item>
+      <a-asset-item id="modele" src="../objects-glb/cormon2.glb"></a-asset-item>
+      <a-asset-item id="tv" src="../objects-glb/tv.glb"></a-asset-item>
       <video id="myVideo"
-              src="./wolf.mp4"
+              src="../wolf.mp4"
               crossorigin="anonymous"
               preload="auto"
               playsinline
@@ -51,15 +49,6 @@
       <a-entity gltf-model="#tv" scale="4 4 4" position="6 1 1" rotation="0 -90 0"></a-entity>    
       <a-video id="tvScreen" src="#myVideo" width="3" height="2" position="5.84582 1.08956 0.99714" rotation="0 -90 0" class="clickable" scale="1.42979 1.19308 1"></a-video>
     </a-entity>
-
-    <a-plane src="./noir.jpg"
-            width="3.5"
-            height="0.7"
-            position="6 0.01 1" 
-            rotation="-90 0 0"
-            opacity="0.7"
-            transparent="true">
-    </a-plane>
       
     <a-camera position="0 1.6 0" wasd-controls="enabled: false">
       <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
@@ -67,7 +56,7 @@
 
   </a-scene>
 
-  <script type="module" src="./index1.js"></script>
+  <script type="module" src="../scripts/desert-cormon.js"></script>
 
 </body>
 </html>

@@ -1,14 +1,10 @@
-<!-- Page web salle avec texte cormon avec jpg -->
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <title>A-Frame HDRI Metallic</title>
   <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-  <link rel="icon" href="./noir.jpg" />
   <script>
-    // Make sure UMD loaders attach to A-Frame's internal Three instance
     if (window.AFRAME && AFRAME.THREE) {
       window.THREE = AFRAME.THREE;
     }
@@ -19,7 +15,7 @@
   <a-scene hdr-env>
   
     <a-assets>
-      <a-asset-item id="modele" src="./objects-glb/cormon.glb"></a-asset-item>
+      <a-asset-item id="modele" src="../objects-glb/cormon.glb"></a-asset-item>
     </a-assets>
 
     <a-gltf-model src="#modele"
@@ -45,6 +41,6 @@
     <a-camera position="0 1.6 0"></a-camera>
   </a-scene>
 
-  <script type="module" src="./index2.js"></script>
+  <script type="module" src="../scripts/ddfpt.js"></script>
 </body>
 </html>
