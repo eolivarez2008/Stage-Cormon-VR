@@ -9,4 +9,8 @@
 | Cartoon Manta Ray | Jungle Jim | 01/10/2025 | https://sketchfab.com/3d-models/cartoon-manta-ray-animated-3f56886ab5fe4c7b8b151ea0974bf5b3 | CC Attribution |
 | Guppy Fish | BlueMesh | 01/10/2025 | https://sketchfab.com/3d-models/guppy-fish-21e14e4b961e406385539f79eacdb1dc | CC Attribution |
 | Underwater Ambience | DRAGON-STUDIO | 02/10/2025 | https://pixabay.com/sound-effects/underwater-ambience-376890/ | Content License |
-| | test |
+| Primary Ion Drive | indierocktopus | 02/09/2025 | https://sketchfab.com/3d-models/primary-ion-drive-d3f50a66fee74c6588dd9bc92f7fe7b3 | CC Attribution |
+| Golden Gate Hills 4K | Dimitrios Savva - Jarod Guest | 03/09/2025 | https://polyhaven.com/a/golden_gate_hills | Creative Commons Zero |
+| Reflective Ball | BuntyS | 03/09/2025 | https://sketchfab.com/3d-models/reflective-ball-4085407d6da54335b325d76e20ec8c48 | CC Attribution|
+| TV | Warkarma | 03/09/2025 | https://sketchfab.com/3d-models/2010-flat-screen-tv-7d46ca5855b0496dbb289cbe7366c850 | CC Attribution |
+| Wolf | | 03/09/2025 | https://vr.lycee-cormontaigne-metz.fr/resources/contenuinfo/wolf.mp4 | |
