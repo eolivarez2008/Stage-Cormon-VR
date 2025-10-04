@@ -1,7 +1,8 @@
 // Javascript avec un fichier jpg pour index2.html
 
-import * as THREE from "three";
-import "aframe";
+// A-Frame provides THREE as a global (AFRAME.THREE). Use that instead of importing
+// another copy of Three to avoid multiple-instances conflicts.
+const THREE = (typeof AFRAME !== 'undefined' && AFRAME.THREE) || window.THREE;
 
 AFRAME.registerComponent("hdr-env", {
   init: function () {

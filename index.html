@@ -4,7 +4,13 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script>
+      if (window.AFRAME && AFRAME.THREE) {
+        window.THREE = AFRAME.THREE;
+      }
+    </script>
+    <link rel="icon" href="./noir.jpg" />
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>    
   </head>
   <body>
     <a-scene stats>
