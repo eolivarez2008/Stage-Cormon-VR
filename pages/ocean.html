@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>    
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="manta-obj" src="../objects-obj/manta-ray/cartoon_manta_ray_animated.obj"></a-asset-item>
+        <a-asset-item id="manta-mtl" src="../objects-obj/manta-ray/cartoon_manta_ray_animated.mtl"></a-asset-item>
+        <a-asset-item id="fish" src="../objects-glb/guppy_fish.glb"></a-asset-item>
+        <a-asset-item id="ion" src="../objects-glb/primary_ion_drive.glb"></a-asset-item>
+      </a-assets>
+
+      <a-sky 
+         src="../background/sea.jpg" 
+         sound="autoplay: true; loop: true; src: ../songs/underwater-ambience-376890.mp3; volume: 1">
+      </a-sky>
+
+      <a-camera position="0 1.6 0" wasd-controls="enabled: false"></a-camera>
+
+      <a-entity id="orbit-fish" animation="property: rotation; to: 0 360 0; dur: 20000; loop: true; easing: linear">
+        <a-gltf-model 
+          src="#fish"
+          position="0 10 -10"
+          rotation="0 90 0"
+          scale="0.5 0.5 0.5"
+          animation-mixer>
+        </a-gltf-model>
+      </a-entity>
+
+      <a-entity id="orbit-manta"
+        animation="property: rotation; to: 0 360 0; dur: 40000; loop: true; easing: linear">
+        <a-obj-model 
+          src="#manta-obj" 
+          mtl="#manta-mtl" 
+          position="0 -10 -15"
+          scale="0.005 0.005 0.005"
+          rotation="-90 0 0"
+          animation="property: position; dir: alternate; to: 0 1 -10; dur: 4000; loop: true">
+        </a-obj-model>
+      </a-entity>
+
+      <a-gltf-model 
+        src="#ion"
+        position="0 5 5"
+        rotation="0 90 0"
+        scale="0.5 0.5 0.5"
+        animation-mixer>
+      </a-gltf-model>
+
+    </a-scene>
+
+  </body>
+</html>

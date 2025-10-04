@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>A-Frame HDRI + TV Vidéo</title>
+  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  <script>
+    if (window.AFRAME && AFRAME.THREE) {
+      window.THREE = AFRAME.THREE;
+    }
+  </script>  
+</head>
+<body>
+  <a-scene hdr-env>
+  
+    <a-assets>
+      <a-asset-item id="modele" src="../objects-glb/cormon2.glb"></a-asset-item>
+      <a-asset-item id="tv" src="../objects-glb/tv.glb"></a-asset-item>
+      <video id="myVideo"
+              src="../wolf.mp4"
+              crossorigin="anonymous"
+              preload="auto"
+              playsinline
+              webkit-playsinline>
+      </video>
+    </a-assets>
+
+    <a-gltf-model src="#modele"
+                  position="0.05 1.6 -0.7"
+                  rotation="90 0 0"
+                  scale="10 10 10"
+                  animation__swing="property: rotation; 
+                                    from: 90 -5 0; 
+                                    to: 90 10 0; 
+                                    dur: 2000; 
+                                    dir: alternate; 
+                                    loop: true; 
+                                    easing: easeInOutSine"
+                  animation__float="property: position; 
+                                    from: 0.05 1.55 -0.7; 
+                                    to: 0.05 1.65 -0.7; 
+                                    dur: 3000; 
+                                    dir: alternate; 
+                                    loop: true; 
+                                    easing: easeInOutSine">
+    </a-gltf-model>
+
+    <a-entity> 
+      <a-entity gltf-model="#tv" scale="4 4 4" position="6 1 1" rotation="0 -90 0"></a-entity>    
+      <a-video id="tvScreen" src="#myVideo" width="3" height="2" position="5.84582 1.08956 0.99714" rotation="0 -90 0" class="clickable" scale="1.42979 1.19308 1"></a-video>
+    </a-entity>
+      
+    <a-camera position="0 1.6 0" wasd-controls="enabled: false">
+      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+    </a-camera>
+
+  </a-scene>
+
+  <script type="module" src="../scripts/desert-cormon.js"></script>
+
+</body>
+</html>
