@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Découvert de la 3D</title>
+  <link rel="icon" href="./noir.jpg" />
+  <style>
+    :root {
+      --bg:#0a422e;
+      --card:#10231a;
+      --accent:#06b6d4;
+      color-scheme:#dbeafe;
+    }
+    html,body {
+      height:100%; margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      background-color: var(--bg);
+      color:#e6eef8;
+    }
+    .wrap{max-width:1100px;margin:40px auto;padding:20px}
+    header{text-align:center;margin-bottom:32px}
+    h1{font-size:30px;margin-bottom:10px}
+    p.lead{max-width:700px;margin:0 auto;opacity:.85;font-size:15px}
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+    }
+    .card {
+      border-radius:12px;
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      transition:transform .25s, box-shadow .25s;
+      background-color: var(--card);
+    }
+    .card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 14px 32px rgba(2,6,23,.6);
+    }
+    .thumb {
+      height:150px;
+      border-radius:8px;
+      background-size:cover;
+      background-position:center;
+      margin-bottom:12px;
+    }
+    .title {font-weight:600;font-size:18px;margin-bottom:6px}
+    .meta {font-size:14px;opacity:.75;flex-grow:1}
+    .btn {
+      margin-top:12px;
+      padding:8px 12px;
+      border-radius:8px;
+      background:linear-gradient(90deg,var(--accent),#4ade80);
+      color:#04201a;
+      text-align:center;
+      font-weight:600;
+      text-decoration:none;
+    }
+    footer {
+      text-align:center;
+      margin-top:40px;
+      font-size:14px;
+      opacity:.7;
+      margin-bottom: 20px;
+    }
+    .github-btn {
+      display:inline-block;
+      margin-top:16px;
+      padding:10px 14px;
+      border-radius:10px;
+      background: black;
+      color:#e6eef8;
+      font-weight:600;
+      text-decoration:none;
+      transition:background .25s;
+    }
+    .github-btn:hover {background:#374151}
+    @media(max-width:640px){
+      h1{font-size:22px}
+      .thumb{height:120px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Découverte de la 3D - OLIVAREZ Emilien</h1>
+      <p class="lead">
+        Ce site présente un projet réalisé durant mon stage afin de découvrir la 
+        réalité virtuelle et la 3D. Explorez différentes scènes interactives 
+        créées avec A-Frame / Threejs et des modèles 3D.
+      </p>
+    </header>
+
+    <main>
+      <div class="grid" id="pagesGrid"></div>
+    </main>
+
+    <footer>
+      <a class="github-btn" href="https://github.com/eolivarez2008/Stage-Cormon-VR" target="_blank">Voir le projet sur GitHub</a>
+    </footer>
+  </div>
+
+  <script>
+    const pages = [
+      { href:'./pages/ocean.html', title:'Scène océanique avec des poissons', thumb:'./background/sea.jpg', desc:'Scène sous-marine avec poissons et ambiance sonore.' },
+      { href:'./pages/desert-cormon.html', title:'Scène désertique avec des éléments', thumb:'./background/golden_gate_hills_4k.jpg', desc:'Scène désertique avec un texte "Cormontaigne" qui reflete le background et une vidéo plaquée sur une tv.' },
+      { href:'./pages/desert-salle.html', title:'Scène désertique avec une salle', thumb:'./background/golden_gate_hills_4k.jpg', desc:'Salle de cours ds un desert avec une rotation' },
+      { href:'./pages/ddfpt.html', title:'Scène scolaire avec du texte miroir', thumb:'./background/salle.jpg', desc:'Salle intérieure avec un texte "Cormontaigne" qui reflète le décor.' }
+    ];
+
+    const grid = document.getElementById('pagesGrid');
+    pages.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `
+        <div class="thumb" style="background-image:url('${p.thumb}')"></div>
+        <div class="title">${p.title}</div>
+        <div class="meta">${p.desc}</div>
+        <a class="btn" href="${p.href}">Voir la page</a>
+      `;
+      grid.appendChild(div);
+    });
+  </script>
+</body>
+</html>

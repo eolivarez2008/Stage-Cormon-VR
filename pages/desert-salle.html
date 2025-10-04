@@ -20,7 +20,7 @@
 
     <A-entity rotation="0 0 0"
               position="0 0 0"
-              rotate-model="speed:0.0002">
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 15000; easing: linear">
 
       <a-gltf-model src="#modele"
                     position="0 -40 200"
@@ -37,7 +37,6 @@
       </a-box>
     </A-entity>
 
-    <!-- Caméra -->
     <a-camera position="0 1.6 0"></a-camera>
   </a-scene>
 
