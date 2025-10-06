@@ -17,7 +17,7 @@ function loadHDRI() {
       sceneEl.object3D.environment = texture;
     }
 
-    console.log("🌌 Background spatial chargé !");
+    console.log("Background spatial chargé !");
   }, undefined, (err) => {
     console.error("Erreur chargement HDRI :", err);
   });

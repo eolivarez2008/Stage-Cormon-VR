@@ -14,13 +14,21 @@
 <a-scene id="scene">
 
   <a-assets>
+    <!-- Modèles 3D -->
     <a-asset-item id="cratere" src="../objects-glb/cratere.glb"></a-asset-item>
     <a-asset-item id="portailModel" src="../objects-glb/portal-animated.glb"></a-asset-item>
     <a-asset-item id="hexagone" src="../objects-glb/hexagon_no_textures.glb"></a-asset-item>
     <a-asset-item id="pad" src="../objects-glb/round_platform.glb"></a-asset-item>
     <a-asset-item id="piedestal" src="../objects-glb/rotating_light_platform_final.glb"></a-asset-item>
+
+    <!-- Images -->
     <img id="spaceHDR" src="../background/space.jpg">
-    <img id="previewDesert" src="../background/golden_gate_hills_4k.jpg">
+    <img id="portal1" src="../images/informatique.jpg">
+    <img id="portal2" src="../images/cyber.jpg">
+    <img id="portal3" src="../images/iot.jpg">
+    <img id="portal4" src="../images/cormon.jpg">
+    <img id="portal5" src="../images/electronique.jpg">
+    <img id="portal6" src="../images/reseau.jpg">
   </a-assets>
 
   <!-- Sol / cratère -->
@@ -45,55 +53,74 @@
                 scale="0.08 0.08 0.08">
   </a-gltf-model>
 
-<a-entity id="portails">
-    <a-gltf-model src="#portailModel" position="0.37749 -0.0186 7.31305" rotation="0 180 0" scale="1.7 1.7 1.7" data-url="page1.html" class="" animation-mixer>
-        <a-circle class="clickable" data-url="./desert-cormon.html"
-            radius="0.9" position="0 1 0" rotation="0 0 0" scale="1 1 1"
-            material="shader: flat; src: #previewDesert; side: double">
-        </a-circle> 
+  <!-- PORTAILS -->
+  <a-entity id="portails">
+
+    <!-- Portail 1 : Informatique -->
+    <a-gltf-model src="#portailModel" position="0.37749 -0.0186 7.31305" rotation="0 180 0" scale="1.7 1.7 1.7" animation-mixer>
+      <a-circle class="clickable" data-url="./desert-cormon.html"
+                radius="0.9" position="0 1 0"
+                material="shader: flat; src: #portal1; side: double">
+      </a-circle>
+      <a-text value="Informatique" look-at="[camera]" position="0 0.25 0.28" align="center"
+              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
-    <a-gltf-model src="#portailModel" position="6.39154 0 3.83122" rotation="0 -118.71284444654066 0" scale="1.7 1.7 1.7" data-url="page2.html" class="" animation-mixer>
-        <a-circle class="clickable" data-url="./desert-cormon.html"
-            radius="0.9" position="0 1 0" rotation="0 0 0" scale="1 1 1"
-            material="shader: flat; src: #previewDesert; side: double">
-        </a-circle> 
+    <!-- Portail 2 : Cybersécurité -->
+    <a-gltf-model src="#portailModel" position="6.39154 0 3.83122" rotation="0 -118.71 0" scale="1.7 1.7 1.7" animation-mixer>
+      <a-circle class="clickable" data-url="./lycee-cormon.html"
+                radius="0.9" position="0 1 0"
+                material="shader: flat; src: #portal2; side: double">
+      </a-circle>
+      <a-text value="Cybersecurite" look-at="[camera]" position="0 0.25 0.28" align="center"
+              color="#b5b5b5" width="4" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
-    <a-gltf-model src="#portailModel" position="-6.45748 0.03514 3.76535" rotation="0 118.86811600902111 0" scale="1.7 1.7 1.7" data-url="page3.html" class="" animation-mixer >
-        <a-circle class="clickable" data-url="./desert-cormon.html"
-            radius="0.9" position="0 1 0" rotation="0 0 0" scale="1 1 1"
-            material="shader: flat; src: #previewDesert; side: double">
-        </a-circle> 
+    <!-- Portail 3 : Domotique / IOT -->
+    <a-gltf-model src="#portailModel" position="-6.45748 0.03514 3.76535" rotation="0 118.86 0" scale="1.7 1.7 1.7" animation-mixer>
+      <a-circle class="clickable" data-url="./iot-cormon.html"
+                radius="0.9" position="0 1 0"
+                material="shader: flat; src: #portal3; side: double">
+      </a-circle>
+      <a-text value="IOT" look-at="[camera]" position="0 0.25 0.28" align="center"
+              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
-    <a-gltf-model src="#portailModel" position="-0.16931 0 -7.49207" scale="1.7 1.7 1.7" data-url="page4.html" class="" animation-mixer>
-        <a-circle class="clickable" data-url="./desert-cormon.html"
-            radius="0.9" position="0 1 0" rotation="0 0 0" scale="1 1 1"
-            material="shader: flat; src: #previewDesert; side: double">
-        </a-circle> 
+    <!-- Portail 4 : Lycée -->
+    <a-gltf-model src="#portailModel" position="-0.16931 0 -7.49207" scale="1.7 1.7 1.7" animation-mixer>
+      <a-circle class="clickable" data-url="./cyber-cormon.html"
+                radius="0.9" position="0 1 0"
+                material="shader: flat; src: #portal4; side: double">
+      </a-circle>
+      <a-text value="Lycee Cormontaigne" look-at="[camera]" position="0 0.25 0.28" align="center"
+              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
-    <a-gltf-model src="#portailModel" position="-6.34921 0 -3.93704" rotation="0 57.51694122200282 0" scale="1.7 1.7 1.7" data-url="page5.html" class="" animation-mixer>
-        <a-circle class="clickable" data-url="./desert-cormon.html"
-            radius="0.9" position="0 1 0" rotation="0 0 0" scale="1 1 1"
-            material="shader: flat; src: #previewDesert; side: double">
-        </a-circle> 
+    <!-- Portail 5 : Électronique -->
+    <a-gltf-model src="#portailModel" position="-6.34921 0 -3.93704" rotation="0 57.51 0" scale="1.7 1.7 1.7" animation-mixer>
+      <a-circle class="clickable" data-url="./electronique-cormon.html"
+                radius="0.9" position="0 1 0"
+                material="shader: flat; src: #portal5; side: double">
+      </a-circle>
+      <a-text value="Electronique" look-at="[camera]" position="0 0.25 0.28" align="center"
+              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
-    <a-gltf-model src="#portailModel" position="6.27631 0.03611 -3.65596" rotation="0 -56.09772476346377 0" scale="1.7 1.7 1.7" data-url="page6.html" class="" animation-mixer>
-        <a-circle class="clickable" data-url="./desert-cormon.html"
-            radius="0.9" position="0 1 0" rotation="0 0 0" scale="1 1 1"
-            material="shader: flat; src: #previewDesert; side: double">
-        </a-circle> 
+    <!-- Portail 6 : Réseau -->
+    <a-gltf-model src="#portailModel" position="6.27631 0.03611 -3.65596" rotation="0 -56.09 0" scale="1.7 1.7 1.7" animation-mixer>
+      <a-circle class="clickable" data-url="./reseau-cormon.html"
+                radius="0.9" position="0 1 0"
+                material="shader: flat; src: #portal6; side: double">
+      </a-circle>
+      <a-text value="Reseau" look-at="[camera]" position="0 0.25 0.28" align="center"
+              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
+
   </a-entity>
 
-    <a-camera position="0 1.6 0" wasd-controls="enabled: false">
-      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
-    </a-camera>
-
-
+  <a-camera position="0 1.6 0" wasd-controls="enabled: false">
+    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+  </a-camera>
 
 </a-scene>
 
