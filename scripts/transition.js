@@ -6,8 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
     schema: {
       paths: { type: "string", default: "../background/golden_gate_hills_4k.jpg, ../background/sea.jpg" },
       models: { type: "string", default: "#ciel, #melec" },
-      sounds: { type: "string", default: "#wind1, #wind2" }, // IDs des sons
-      interval: { type: "int", default: 4000 },
+      interval: { type: "int", default: 10000 },
     },
 
     init: function () {
@@ -21,28 +20,20 @@ window.addEventListener("DOMContentLoaded", () => {
       this.modelIDs = this.data.models.split(",").map(s => s.trim());
       this.modelsEls = this.modelIDs.map(id => document.querySelector(id)).filter(Boolean);
 
-      // Sons
-      this.soundIDs = this.data.sounds.split(",").map(s => s.trim());
-      this.soundEl = document.querySelector('#ambientSound');
-
       if (this.modelsEls.length !== this.modelIDs.length) {
         console.warn("Certains modèles n'ont pas été trouvés :", this.modelIDs);
       }
 
-      if (!this.soundEl) {
-        console.warn("L'élément #ambientSound n'a pas été trouvé !");
-      }
+      // Initialise visibilité et sons
+      this.modelsEls.forEach((el, i) => {
+        const visible = i === 0;
+        el.setAttribute("visible", visible);
+        if (el.components.sound) {
+          if (visible) el.components.sound.playSound();
+          else el.components.sound.stopSound();
+        }
+      });
 
-      // Initialise la visibilité des modèles
-      this.modelsEls.forEach((el, i) => el.setAttribute("visible", i === 0));
-
-      // Joue le son initial
-      if (this.soundEl) {
-        this.soundEl.setAttribute('sound', `src: ${this.soundIDs[0]}; autoplay: true; loop: true; volume: 0.5`);
-        this.soundEl.components.sound?.playSound();
-      }
-
-      // Démarre le cycle
       this.updateScene();
       this.startTimer();
     },
@@ -58,25 +49,21 @@ window.addEventListener("DOMContentLoaded", () => {
         console.log("🌅 Fond chargé :", bg);
       });
 
-      // Alterne les modèles
+      // Alterne les modèles et leurs sons spatialisés
       this.modelsEls.forEach(el => {
-        el.setAttribute("visible", !el.getAttribute("visible"));
-        console.log(`${el.id} est maintenant ${el.getAttribute("visible") ? "visible" : "caché"}`);
-      });
+        const isVisible = !el.getAttribute("visible");
+        el.setAttribute("visible", isVisible);
 
-      // Change le son
-      if (this.soundEl) {
-        const soundID = this.soundIDs[this.index % this.soundIDs.length];
-        this.soundEl.components.sound?.stopSound();
-        this.soundEl.setAttribute('sound', `src: ${soundID}; autoplay: true; loop: true; volume: 0.5`);
-        this.soundEl.components.sound?.playSound();
-        console.log("🔊 Son chargé :", soundID);
-      }
+        if (el.components.sound) {
+          if (isVisible) el.components.sound.playSound();
+          else el.components.sound.stopSound();
+        }
+        console.log(`${el.id} est maintenant ${isVisible ? "visible" : "caché"}`);
+      });
     },
 
     startTimer: function () {
       setInterval(() => {
-        // Change l'index de l'image
         this.index = (this.index + 1) % this.paths.length;
         this.updateScene();
       }, this.data.interval);

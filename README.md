@@ -15,3 +15,9 @@
 | 2010 Flat screen TV | Warkarma | 03/09/2025 | https://sketchfab.com/3d-models/2010-flat-screen-tv-7d46ca5855b0496dbb289cbe7366c850 | CC Attribution |
 | Wolf | | 03/09/2025 | https://vr.lycee-cormontaigne-metz.fr/resources/contenuinfo/wolf.mp4 | |
 | Winter Wind | DRAGON-STUDIO | 06/10/2025 | https://pixabay.com/sound-effects/winter-wind-402331/ | Content License |
+| Roter Kamm, Impact crater, Namibia | Matthias Ebert | 06/10/2025 | https://sketchfab.com/3d-models/roter-kamm-impact-crater-namibia-3a1a686c3dd14f1a8ce0a0ae0ccf8588 | CC Attribution |
+| Sci-Fi portal - Asset | Samuel F. Johanns (Oneironauticus) | 06/10/2025 | https://sketchfab.com/3d-models/sci-fi-portal-asset-6a991ae1eb75407d8a4848e1aecc4b14 | CC Attribution |
+| round platform | n0stardust | 06/10/2025 | https://sketchfab.com/3d-models/round-platform-64de8f896e3e40e4a1e8a67d01620ac1 | CC Attribution |
+| Rotating Light Platform Final | Phillip Stephens | 06/10/2025 | https://sketchfab.com/3d-models/rotating-light-platform-final-1563d863485a46d5a244df12f0f6123c | CC Attribution |
+| Hexagon (no textures) | iamsosha | 06/10/2025 | https://sketchfab.com/3d-models/hexagon-no-textures-75a0b9e8c51b4ad98d0a9a74735409b0 | CC Attribution |
+| HDR Blue Nebulae | | 06/10/2025 | https://www.spacespheremaps.com/wp-content/uploads/HDR_blue_nebulae-1.hdr | |
