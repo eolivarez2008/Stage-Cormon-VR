@@ -11,13 +11,18 @@
 <body>
 <a-scene hdr-env="paths: ../background/golden_gate_hills_4k.jpg, ../background/sea.jpg; 
                   models: #ciel, #melec; 
+                  sounds: #wind1, #wind2;
                   interval: 4000">
 
   <a-assets>
     <a-asset-item id="cormon" src="../objects-glb/cormon2.glb"></a-asset-item>
     <a-asset-item id="ciel-glb" src="../objects-glb/Ciel2.glb"></a-asset-item>
     <a-asset-item id="melec-glb" src="../objects-glb/Melec.glb"></a-asset-item>
+    <audio id="wind1" src="../songs/wind-gust-386158.mp3" preload="auto"></audio>
+    <audio id="wind2" src="../songs/underwater-ambience-376890.mp3" preload="auto"></audio>
   </a-assets>
+
+  <a-entity id="ambientSound"></a-entity>
 
   <!-- Modèle permanent -->
   <a-gltf-model id="cormon" src="#cormon"
