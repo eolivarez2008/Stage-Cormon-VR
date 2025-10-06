@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>A-Frame HDRI Switch</title>
+  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  <script>
+    if (window.AFRAME && AFRAME.THREE) window.THREE = AFRAME.THREE;
+  </script>
+</head>
+<body>
+<a-scene hdr-env="paths: ../background/golden_gate_hills_4k.jpg, ../background/sea.jpg; 
+                  models: #ciel, #melec; 
+                  interval: 4000">
+
+  <a-assets>
+    <a-asset-item id="cormon" src="../objects-glb/cormon2.glb"></a-asset-item>
+    <a-asset-item id="ciel" src="../objects-glb/Ciel2.glb"></a-asset-item>
+    <a-asset-item id="melec" src="../objects-glb/Melec.glb"></a-asset-item>
+  </a-assets>
+
+  <!-- Modèle permanent -->
+  <a-gltf-model id="cormon" src="#cormon"
+                position="0.05 2 -1.3"
+                rotation="90 0 0"
+                scale="10 10 10"
+                animation__swing="property: rotation; from:90 -5 0; to:90 10 0; dur:2000; dir:alternate; loop:true; easing:easeInOutSine"
+                animation__float="property: position; from:0.05 2.05 -1.3; to:0.05 1.95 -1.3; dur:3000; dir:alternate; loop:true; easing:easeInOutSine">
+  </a-gltf-model>
+
+  <!-- Modèles à alterner -->
+  <a-gltf-model id="ciel" src="#ciel" visible="true"
+                position="0.05 1.4 -1.3" rotation="90 0 0" scale="10 10 10"
+                animation__swing="property: rotation; from:90 -5 0; to:90 10 0; dur:2000; dir:alternate; loop:true; easing:easeInOutSine">
+  </a-gltf-model>
+
+  <a-gltf-model id="melec" src="#melec" visible="false"
+                position="0.05 1.4 -1.3" rotation="90 0 0" scale="10 10 10"
+                animation__swing="property: rotation; from:90 -5 0; to:90 10 0; dur:2000; dir:alternate; loop:true; easing:easeInOutSine">
+  </a-gltf-model>
+
+  <a-camera position="0 1.6 0" wasd-controls="enabled: false"></a-camera>
+
+</a-scene>
+
+
+  <script type="module" src="../scripts/transition.js"></script>
+
+</body>
+</html>
