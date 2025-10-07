@@ -16,6 +16,7 @@
     <a-assets>
       <a-asset-item id="modele" src="../objects-glb/cormon2.glb"></a-asset-item>
       <a-asset-item id="tv" src="../objects-glb/tv.glb"></a-asset-item>
+      <a-asset-item id="logo" src="../objects-glb/logo-cormon.glb"></a-asset-item>
       <video id="myVideo"
               src="../videos/wolf.mp4"
               crossorigin="anonymous"
@@ -44,6 +45,8 @@
                                     loop: true; 
                                     easing: easeInOutSine">
     </a-gltf-model>
+
+    <a-entity gltf-model="#logo" scale="4 4 4" position="-1 1.5 0.3" rotation="90 90 0"></a-entity> 
 
     <a-entity> 
       <a-entity gltf-model="#tv" scale="4 4 4" position="6 1 1" rotation="0 -90 0"></a-entity>    
