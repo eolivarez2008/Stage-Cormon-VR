@@ -57,44 +57,44 @@
   <!-- Piedestal -->
   <a-gltf-model id="piedestalModel" src="#piedestal" position="0 -0.12 0" rotation="0 0 0" scale="0.08 0.08 0.08" shadow="cast: true; receive: true"></a-gltf-model>
 
-  <!-- Portails -->
-  <a-entity id="portails">
-    <!-- Portail 1 : Informatique -->
-    <a-gltf-model src="#portailModel" position="0.37749 -0.0186 7.31305" rotation="0 180 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
-      <a-circle class="clickable" data-url="./desert-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal1; side: double"></a-circle>
-      <a-text value="Informatique" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
-    </a-gltf-model>
+    <!-- Portails -->
+    <a-entity id="portails">
+        <!-- Portail 1 : Informatique -->
+        <a-gltf-model src="#portailModel" position="0.37749 -0.0186 7.31305" rotation="0 180 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+            <a-circle class="portal-clickable" data-key="informatique" radius="0.9" position="0 1 0" material="shader: flat; src: #portal1; side: double"></a-circle>
+            <a-text value="Informatique" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+        </a-gltf-model>
 
-    <!-- Portail 2 : Cybersécurité -->
-    <a-gltf-model src="#portailModel" position="6.39154 0 3.83122" rotation="0 -118.71 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
-      <a-circle class="clickable" data-url="./lycee-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal2; side: double"></a-circle>
-      <a-text value="Cybersecurite" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="4" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
-    </a-gltf-model>
+        <!-- Portail 2 : Cybersécurité -->
+        <a-gltf-model src="#portailModel" position="6.39154 0 3.83122" rotation="0 -118.71 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+            <a-circle class="portal-clickable" data-key="cybersecurite" radius="0.9" position="0 1 0" material="shader: flat; src: #portal2; side: double"></a-circle>
+            <a-text value="Cybersecurite" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="4" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+        </a-gltf-model>
 
-    <!-- Portail 3 : IOT -->
-    <a-gltf-model src="#portailModel" position="-6.45748 0.03514 3.76535" rotation="0 118.86 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
-      <a-circle class="clickable" data-url="./iot-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal3; side: double"></a-circle>
-      <a-text value="IOT" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
-    </a-gltf-model>
+        <!-- Portail 3 : IOT -->
+        <a-gltf-model src="#portailModel" position="-6.45748 0.03514 3.76535" rotation="0 118.86 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+            <a-circle class="portal-clickable" data-key="iot" radius="0.9" position="0 1 0" material="shader: flat; src: #portal3; side: double"></a-circle>
+            <a-text value="IOT" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+        </a-gltf-model>
 
-    <!-- Portail 4 : Lycée -->
-    <a-gltf-model src="#portailModel" position="-0.16931 0 -7.49207" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
-      <a-circle class="clickable" data-url="./cyber-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal4; side: double"></a-circle>
-      <a-text value="Lycee Cormontaigne" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
-    </a-gltf-model>
+        <!-- Portail 4 : Lycée Cormontaigne -->
+        <a-gltf-model src="#portailModel" position="-0.16931 0 -7.49207" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+            <a-circle class="portal-clickable" data-key="lycee" radius="0.9" position="0 1 0" material="shader: flat; src: #portal4; side: double"></a-circle>
+            <a-text value="Lycee Cormontaigne" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+        </a-gltf-model>
 
-    <!-- Portail 5 : Électronique -->
-    <a-gltf-model src="#portailModel" position="-6.34921 0 -3.93704" rotation="0 57.51 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
-      <a-circle class="clickable" data-url="./electronique-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal5; side: double"></a-circle>
-      <a-text value="Electronique" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
-    </a-gltf-model>
+        <!-- Portail 5 : Électronique -->
+        <a-gltf-model src="#portailModel" position="-6.34921 0 -3.93704" rotation="0 57.51 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+            <a-circle class="portal-clickable" data-key="electronique" radius="0.9" position="0 1 0" material="shader: flat; src: #portal5; side: double"></a-circle>
+            <a-text value="Electronique" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+        </a-gltf-model>
 
-    <!-- Portail 6 : Réseau -->
-    <a-gltf-model src="#portailModel" position="6.27631 0.03611 -3.65596" rotation="0 -56.09 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
-      <a-circle class="clickable" data-url="./reseau-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal6; side: double"></a-circle>
-      <a-text value="Reseau" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
-    </a-gltf-model>
-  </a-entity>
+        <!-- Portail 6 : Réseau -->
+        <a-gltf-model src="#portailModel" position="6.27631 0.03611 -3.65596" rotation="0 -56.09 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+            <a-circle class="portal-clickable" data-key="reseau" radius="0.9" position="0 1 0" material="shader: flat; src: #portal6; side: double"></a-circle>
+            <a-text value="Reseau" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+        </a-gltf-model>
+    </a-entity>
 
     <!-- Lune -->
     <a-entity id="moonOrbit" position="0 0 0"
@@ -139,9 +139,15 @@
     <a-video id="cartVideo" src="#CART_SECRET" toggleclick="" position="0.58828 11.74254 -2.11353" visible="false" class="clickable" rotation="89.29375349775343 -179.9998479605043 -179.9998479605043" scale="10 10 1"></a-video>
 
   <!-- Camera -->
-  <a-camera position="0 1.6 0" wasd-controls="enabled: false">
-    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
-  </a-camera>
+    <a-camera position="0 1.6 0" wasd-controls="enabled: false">
+    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable, .portal-clickable"></a-entity>
+    </a-camera>
+
+    <!-- Popup -->
+    <div id="popup" style="display:none;">
+        <button id="closePopup">X</button>
+        <div id="popupContent"></div>
+    </div>
 
   <button id="btn-home">Accueil</button>
 
@@ -156,6 +162,32 @@ document.getElementById('btn-home').addEventListener('click', () => {
 </script>
 
 <style>
+#popup {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background-color: rgba(0,0,0,0.95);
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 2000;
+  overflow-y: auto;
+  box-shadow: 0 0 20px #000;
+}
+#closePopup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: red;
+  color: white;
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#popupContent { margin-top: 50px; }
 #btn-home {
     position: fixed;      
     top: 20px;   

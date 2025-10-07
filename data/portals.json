@@ -1,0 +1,26 @@
+{
+  "informatique": {
+    "title": "Informatique",
+    "content": "<h2>Introduction à l'Informatique</h2><p>L'informatique est la science du traitement de l'information à l'aide d'ordinateurs et de systèmes numériques. Dans ce portail, vous découvrirez les bases du code, des algorithmes et de la programmation.</p><ul><li>Programmation : Python, JavaScript, C++</li><li>Architecture des ordinateurs</li><li>Réseaux et communication</li></ul>"
+  },
+  "cybersecurite": {
+    "title": "Cybersécurité",
+    "content": "<h2>Cybersécurité</h2><p>La cybersécurité consiste à protéger les systèmes informatiques et les données contre les cyberattaques et les intrusions. Ce portail explique les principes de sécurité numérique et la protection des informations personnelles.</p><ul><li>Cryptographie</li><li>Pare-feu et antivirus</li><li>Analyse des vulnérabilités</li></ul>"
+  },
+  "iot": {
+    "title": "Internet des Objets (IoT)",
+    "content": "<h2>Internet des Objets (IoT)</h2><p>L'IoT relie des objets physiques à internet, leur permettant de collecter et d'échanger des données. Dans ce portail, vous explorerez les capteurs, actionneurs et systèmes intelligents.</p><ul><li>Maison connectée</li><li>Capteurs intelligents</li><li>Automatisation industrielle</li></ul>"
+  },
+  "lycee": {
+    "title": "Lycée Cormontaigne",
+    "content": "<h2>Découverte du Lycée Cormontaigne</h2><p>Ce portail vous présente l'histoire et les filières du Lycée Cormontaigne, ses spécialités et ses projets pédagogiques.</p><ul><li>Sections scientifiques et technologiques</li><li>Projets numériques</li><li>Clubs et activités extra-scolaires</li></ul>"
+  },
+  "electronique": {
+    "title": "Électronique",
+    "content": "<h2>Électronique</h2><p>L'électronique est la discipline qui étudie les circuits et composants électroniques. Ce portail propose une initiation aux bases des circuits, des composants et de l'électronique pratique.</p><ul><li>Circuits analogiques et numériques</li><li>Microcontrôleurs</li><li>Projets DIY</li></ul>"
+  },
+  "reseau": {
+    "title": "Réseau",
+    "content": "<h2>Réseaux informatiques</h2><p>Les réseaux permettent la communication entre ordinateurs et périphériques. Dans ce portail, vous apprendrez le fonctionnement des réseaux, de l'Internet et des protocoles de communication.</p><ul><li>TCP/IP et protocoles</li><li>Routage et commutation</li><li>Sécurité des réseaux</li></ul>"
+  }
+}

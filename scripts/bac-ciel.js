@@ -2,12 +2,65 @@ const roc = document.querySelector('#roc');
 const camera = document.querySelector('a-camera');
 const videoEntity = document.querySelector('#cartVideo');
 const videoEl = document.querySelector('#CART_SECRET');
-const clickableElements = document.querySelectorAll('.clickable');
 
 // Sons depuis <a-assets>
 const gaspSound = document.querySelector('#gaspSound');  
 const audioRumble = document.querySelector('#rumbleSound');
 const finalSound = document.querySelector('#finalSound');
+
+// Pop-up portail
+const popup = document.createElement('div');
+popup.id = 'popup';
+popup.style.cssText = `
+  display: none;
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background-color: rgba(0,0,0,0.95);
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 2000;
+  overflow-y: auto;
+  box-shadow: 0 0 20px #000;
+`;
+const closeBtn = document.createElement('button');
+closeBtn.textContent = 'X';
+closeBtn.style.cssText = `
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: red;
+  color: white;
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+const popupContent = document.createElement('div');
+popupContent.id = 'popupContent';
+popupContent.style.marginTop = '50px';
+popup.appendChild(closeBtn);
+popup.appendChild(popupContent);
+document.body.appendChild(popup);
+
+// Fermeture du popup
+function closePopup() {
+  popup.style.display = 'none';
+}
+closeBtn.addEventListener('click', closePopup);
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Escape' || e.code === 'Space') closePopup();
+});
+
+// Contenu des portails depuis JSON
+let portalsData = {};
+fetch('../data/portals.json')
+  .then(res => res.json())
+  .then(data => portalsData = data)
+  .catch(err => console.error('Erreur chargement JSON:', err));
 
 // Fonction tremblement caméra et roc
 function shakeCameraAndRoc(duration = 6000, magnitude = 0.5, callback) {
@@ -35,7 +88,6 @@ function shakeCameraAndRoc(duration = 6000, magnitude = 0.5, callback) {
     } else {
       roc.object3D.position.set(originalRocPos.x, originalRocPos.y, originalRocPos.z);
       camera.object3D.position.set(originalCamPos.x, originalCamPos.y, originalCamPos.z);
-
       if (callback) callback();
     }
   }
@@ -71,10 +123,17 @@ videoEntity.addEventListener('click', () => {
   }
 });
 
-// Gestion des portails
-clickableElements.forEach(el => {
+// Gestion des portails : affichage pop-up (uniquement portails)
+const portalElements = document.querySelectorAll('.portal-clickable');
+portalElements.forEach(el => {
   el.addEventListener('click', () => {
-    const url = el.getAttribute('data-url');
-    if (url) window.location.href = url;
+    const key = el.getAttribute('data-key');
+    if (portalsData[key]) {
+      popupContent.innerHTML = `<h1>${portalsData[key].title}</h1>${portalsData[key].content}`;
+      popup.style.display = 'block';
+    } else {
+      popupContent.innerHTML = `<h1>Portail</h1><p>Contenu indisponible</p>`;
+      popup.style.display = 'block';
+    }
   });
 });
