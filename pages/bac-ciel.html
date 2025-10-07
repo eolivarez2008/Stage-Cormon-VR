@@ -3,28 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Accueil Spatial</title>
+  <link rel="shortcut icon" href="../CCC.svg" type="image/svg+xml">
   <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>      
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script>
     if (window.AFRAME && AFRAME.THREE) window.THREE = AFRAME.THREE;
   </script>
 </head>
 <body>
 
-<a-scene id="scene">
+<a-scene shadow="type: pcfsoft">
 
   <a-assets>
     <!-- Modèles 3D -->
     <a-asset-item id="cratere" src="../objects-glb/cratere.glb"></a-asset-item>
     <a-asset-item id="portailModel" src="../objects-glb/portal-animated.glb"></a-asset-item>
-    <a-asset-item id="hexagone" src="../objects-glb/hexagon_no_textures.glb"></a-asset-item>
     <a-asset-item id="pad" src="../objects-glb/round_platform.glb"></a-asset-item>
     <a-asset-item id="piedestal" src="../objects-glb/rotating_light_platform_final.glb"></a-asset-item>
     <a-asset-item id="rochet" src="../objects-glb/roc.glb"></a-asset-item>
-    <a-asset-item id="explosionModel" src="../objects-gltf/scene.gltf"></a-asset-item>
+    <a-asset-item id="moon" src="../objects-glb/moon.glb"></a-asset-item>
+    <a-asset-item id="shootingStarModel" src="../objects-glb"></a-asset-item>
 
-    <!-- Vidéos -->
+    <!-- Vidéo -->
     <video id="CART_SECRET" loop="true" preload="auto" src="../videos/cart.mp4"></video>
+
+    <!-- Sons -->
+    <audio id="gaspSound" src="../songs/gasp-6253.mp3" preload="auto"></audio>
+    <audio id="rumbleSound" src="../songs/earth-rumble-6953.mp3" preload="auto"></audio>
+    <audio id="finalSound" src="../songs/male-ahhhh-104524.mp3" preload="auto"></audio>
 
     <!-- Images -->
     <img id="portal1" src="../images/informatique.jpg">
@@ -35,124 +41,120 @@
     <img id="portal6" src="../images/reseau.jpg">
   </a-assets>
 
+  <!-- Sky -->
   <a-sky src="../background/space.jpg"></a-sky>
 
-  <!-- Sol / cratère -->
-  <a-gltf-model id="cratereModel"
-                src="#cratere"
-                position="0 -129 0"
-                rotation="0 0 0"
-                scale="1 1 1">
-  </a-gltf-model>
+  <!-- Lumière principale -->
+    <a-entity light="intensity: 1.2; castShadow: true; shadowCameraFar: 200; shadowCameraNear: 0.1; shadowCameraTop: 21.76; shadowCameraRight: 27.76; shadowCameraBottom: -28.95; shadowCameraLeft: -30.55" position="0.67485 15 22.6312"></a-entity>
+    <a-entity light="type: ambient; intensity: 0.4; color: #ffffff"></a-entity>
 
-  <a-gltf-model id="pad-sol"
-                src="#pad"
-                position="0 -0.24 0"
-                rotation="0 0 0"
-                scale="4 4 4">
-  </a-gltf-model>
+  <!-- Cratère -->
+  <a-gltf-model id="cratereModel" src="#cratere" position="-1.52205 -3.25 -3.97696" scale="0.02 0.02 0.02" shadow="" gltf-model="../objects-glb/cratere.glb"></a-gltf-model>
 
-  <a-gltf-model id="piedestalModel"
-                src="#piedestal"
-                position="0 -0.12 0"
-                rotation="0 0 0"
-                scale="0.08 0.08 0.08">
-  </a-gltf-model>
+  <!-- Pad -->
+  <a-gltf-model id="pad-sol" src="#pad" position="0 -0.24 0" rotation="0 0 0" scale="4 4 4" shadow="receive: true"></a-gltf-model>
 
-  <!-- PORTAILS -->
+  <!-- Piedestal -->
+  <a-gltf-model id="piedestalModel" src="#piedestal" position="0 -0.12 0" rotation="0 0 0" scale="0.08 0.08 0.08" shadow="cast: true; receive: true"></a-gltf-model>
+
+  <!-- Portails -->
   <a-entity id="portails">
-
     <!-- Portail 1 : Informatique -->
-    <a-gltf-model src="#portailModel" position="0.37749 -0.0186 7.31305" rotation="0 180 0" scale="1.7 1.7 1.7" animation-mixer>
-      <a-circle class="clickable" data-url="./desert-cormon.html"
-                radius="0.9" position="0 1 0"
-                material="shader: flat; src: #portal1; side: double">
-      </a-circle>
-      <a-text value="Informatique" look-at="[camera]" position="0 0.25 0.28" align="center"
-              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+    <a-gltf-model src="#portailModel" position="0.37749 -0.0186 7.31305" rotation="0 180 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+      <a-circle class="clickable" data-url="./desert-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal1; side: double"></a-circle>
+      <a-text value="Informatique" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
     <!-- Portail 2 : Cybersécurité -->
-    <a-gltf-model src="#portailModel" position="6.39154 0 3.83122" rotation="0 -118.71 0" scale="1.7 1.7 1.7" animation-mixer>
-      <a-circle class="clickable" data-url="./lycee-cormon.html"
-                radius="0.9" position="0 1 0"
-                material="shader: flat; src: #portal2; side: double">
-      </a-circle>
-      <a-text value="Cybersecurite" look-at="[camera]" position="0 0.25 0.28" align="center"
-              color="#b5b5b5" width="4" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+    <a-gltf-model src="#portailModel" position="6.39154 0 3.83122" rotation="0 -118.71 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+      <a-circle class="clickable" data-url="./lycee-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal2; side: double"></a-circle>
+      <a-text value="Cybersecurite" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="4" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
     <!-- Portail 3 : IOT -->
-    <a-gltf-model src="#portailModel" position="-6.45748 0.03514 3.76535" rotation="0 118.86 0" scale="1.7 1.7 1.7" animation-mixer>
-      <a-circle class="clickable" data-url="./iot-cormon.html"
-                radius="0.9" position="0 1 0"
-                material="shader: flat; src: #portal3; side: double">
-      </a-circle>
-      <a-text value="IOT" look-at="[camera]" position="0 0.25 0.28" align="center"
-              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+    <a-gltf-model src="#portailModel" position="-6.45748 0.03514 3.76535" rotation="0 118.86 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+      <a-circle class="clickable" data-url="./iot-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal3; side: double"></a-circle>
+      <a-text value="IOT" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
     <!-- Portail 4 : Lycée -->
-    <a-gltf-model src="#portailModel" position="-0.16931 0 -7.49207" scale="1.7 1.7 1.7" animation-mixer>
-      <a-circle class="clickable" data-url="./cyber-cormon.html"
-                radius="0.9" position="0 1 0"
-                material="shader: flat; src: #portal4; side: double">
-      </a-circle>
-      <a-text value="Lycee Cormontaigne" look-at="[camera]" position="0 0.25 0.28" align="center"
-              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+    <a-gltf-model src="#portailModel" position="-0.16931 0 -7.49207" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+      <a-circle class="clickable" data-url="./cyber-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal4; side: double"></a-circle>
+      <a-text value="Lycee Cormontaigne" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
     <!-- Portail 5 : Électronique -->
-    <a-gltf-model src="#portailModel" position="-6.34921 0 -3.93704" rotation="0 57.51 0" scale="1.7 1.7 1.7" animation-mixer>
-      <a-circle class="clickable" data-url="./electronique-cormon.html"
-                radius="0.9" position="0 1 0"
-                material="shader: flat; src: #portal5; side: double">
-      </a-circle>
-      <a-text value="Electronique" look-at="[camera]" position="0 0.25 0.28" align="center"
-              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+    <a-gltf-model src="#portailModel" position="-6.34921 0 -3.93704" rotation="0 57.51 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+      <a-circle class="clickable" data-url="./electronique-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal5; side: double"></a-circle>
+      <a-text value="Electronique" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
     <!-- Portail 6 : Réseau -->
-    <a-gltf-model src="#portailModel" position="6.27631 0.03611 -3.65596" rotation="0 -56.09 0" scale="1.7 1.7 1.7" animation-mixer>
-      <a-circle class="clickable" data-url="./reseau-cormon.html"
-                radius="0.9" position="0 1 0"
-                material="shader: flat; src: #portal6; side: double">
-      </a-circle>
-      <a-text value="Reseau" look-at="[camera]" position="0 0.25 0.28" align="center"
-              color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+    <a-gltf-model src="#portailModel" position="6.27631 0.03611 -3.65596" rotation="0 -56.09 0" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
+      <a-circle class="clickable" data-url="./reseau-cormon.html" radius="0.9" position="0 1 0" material="shader: flat; src: #portal6; side: double"></a-circle>
+      <a-text value="Reseau" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
-
   </a-entity>
 
-    <!-- ROC -->
-    <a-entity id="rocOrbit" position="0 0 0"        
-            animation="property: rotation; to: 0 360 0; loop: true; dur: 15000; easing: linear">
-    <a-entity id="roc" 
-                gltf-model="#rochet" 
-                position="-1.08453 83.98102 -112.02373"
-                scale="2 2 2" 
-                animation-mixer="timeScale: 0.20"
-                class="clickable">
-    </a-entity>
+    <!-- Lune -->
+    <a-entity id="moonOrbit" position="0 0 0"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear">
+        
+        <!-- Groupe de la lune -->
+        <a-entity id="moonGroup" position="0 40 -80">
+            
+            <!-- Modèle de la lune -->
+            <a-gltf-model id="moon" 
+                        src="#moon"
+                        scale="9 9 9"
+                        rotation="0 0 0"
+                        shadow="cast: true; receive: true">
+            </a-gltf-model>
+
+            <!-- 💡 Lumière principale : la lune éclaire la scène -->
+            <a-entity id="moonToScene"
+                    light="type: directional; intensity: 1.6; color: #f8faff; castShadow: true;
+                            shadowCameraFar: 200; shadowCameraTop: 60; shadowCameraBottom: -60;
+                            shadowCameraLeft: -60; shadowCameraRight: 60;"
+                    position="0 0 0"
+                    target="#cratereModel">
+            </a-entity>
+
+            <!-- 💡 Lumière inverse : le cratère éclaire légèrement la lune (pour qu’elle soit visible) -->
+            <a-entity id="sceneToMoon"
+                    light="type: directional; intensity: 0.9; color: #ffffff;"
+                    position="0 -40 80"
+                    target="#moon">
+            </a-entity>
+
+        </a-entity>
     </a-entity>
 
-    <!-- Vidéo cachée pour le secret -->
+  <!-- ROC -->
+  <a-entity id="rocOrbit" position="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 15000; easing: linear">
+    <a-gltf-model id="roc" src="#rochet" position="-1.08453 83.98102 -112.02373" scale="2 2 2" animation-mixer="timeScale: 0.2" class="clickable" shadow="cast: true; receive: true"></a-gltf-model>
+  </a-entity>
+
+    <!-- Vidéo cachée pour le secret --> 
     <a-video id="cartVideo" src="#CART_SECRET" toggleclick="" position="0.58828 11.74254 -2.11353" visible="false" class="clickable" rotation="89.29375349775343 -179.9998479605043 -179.9998479605043" scale="10 10 1"></a-video>
 
-    <a-camera position="0 1.6 0" wasd-controls="enabled: false">
-        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
-    </a-camera>
+  <!-- Camera -->
+  <a-camera position="0 1.6 0" wasd-controls="enabled: false">
+    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+  </a-camera>
 
-    <button id="btn-home">Accueil</button>
+  <button id="btn-home">Accueil</button>
 
 </a-scene>
 
 <script type="module" src="../scripts/bac-ciel.js"></script>
 <script>
-    document.getElementById('btn-home').addEventListener('click', () => {
-        window.location.href = '../'; // Chemin vers la page d'accueil
-    });
+// Bouton Accueil
+document.getElementById('btn-home').addEventListener('click', () => {
+  window.location.href = '../';
+});
 </script>
+
 <style>
 #btn-home {
     position: fixed;      

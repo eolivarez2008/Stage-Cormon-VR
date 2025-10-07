@@ -4,39 +4,62 @@ const videoEntity = document.querySelector('#cartVideo');
 const videoEl = document.querySelector('#CART_SECRET');
 const clickableElements = document.querySelectorAll('.clickable');
 
-// Fonction tremblement caméra
-function shakeCamera(duration = 2000, magnitude = 0.3) {
+// Sons depuis <a-assets>
+const gaspSound = document.querySelector('#gaspSound');  
+const audioRumble = document.querySelector('#rumbleSound');
+const finalSound = document.querySelector('#finalSound');
+
+// Fonction tremblement caméra et roc
+function shakeCameraAndRoc(duration = 6000, magnitude = 0.5, callback) {
   const start = Date.now();
-  const originalPos = camera.getAttribute('position');
+  const originalCamPos = { x: 0, y: 1.6, z: 0 };
+  const originalRocPos = { 
+    x: roc.getAttribute('position').x, 
+    y: roc.getAttribute('position').y, 
+    z: roc.getAttribute('position').z 
+  };
 
   function shake() {
     const elapsed = Date.now() - start;
     if (elapsed < duration) {
-      const offsetX = Math.sin(elapsed * 0.1) * magnitude * (Math.random() * 0.5 + 0.5);
-      const offsetY = Math.cos(elapsed * 0.1) * magnitude * (Math.random() * 0.5 + 0.5);
-      const offsetZ = Math.sin(elapsed * 0.1) * magnitude * (Math.random() * 0.5 + 0.5);
+      const factor = magnitude;
+      roc.object3D.position.x = originalRocPos.x + (Math.random() - 0.5) * factor;
+      roc.object3D.position.y = originalRocPos.y + (Math.random() - 0.5) * factor;
+      roc.object3D.position.z = originalRocPos.z + (Math.random() - 0.5) * factor;
 
-      camera.setAttribute('position', {
-        x: originalPos.x + offsetX,
-        y: originalPos.y + offsetY,
-        z: originalPos.z + offsetZ
-      });
+      camera.object3D.position.x = originalCamPos.x + (Math.random() - 0.5) * factor;
+      camera.object3D.position.y = originalCamPos.y + (Math.random() - 0.5) * factor;
+      camera.object3D.position.z = originalCamPos.z + (Math.random() - 0.5) * factor;
 
       requestAnimationFrame(shake);
     } else {
-      camera.setAttribute('position', originalPos);
+      roc.object3D.position.set(originalRocPos.x, originalRocPos.y, originalRocPos.z);
+      camera.object3D.position.set(originalCamPos.x, originalCamPos.y, originalCamPos.z);
+
+      if (callback) callback();
     }
   }
 
   shake();
 }
 
-// Gestion du clic sur le roc
+// Clic sur le roc : enchaînement des sons et tremblement
 roc.addEventListener('click', () => {
-  shakeCamera(2000, 0.5);
+  gaspSound.currentTime = 0;
+  gaspSound.play();
+
+  gaspSound.onended = () => {
+    audioRumble.currentTime = 0;
+    audioRumble.play();
+    shakeCameraAndRoc(6000, 0.5, () => {
+      finalSound.currentTime = 0;
+      finalSound.play();
+      audioRumble.pause();
+    });
+  };
 });
 
-// Gestion de la vidéo
+// Clic sur la vidéo : toggle play/visible
 videoEntity.addEventListener('click', () => {
   if (!videoEntity.getAttribute('visible')) {
     videoEntity.setAttribute('visible', true);

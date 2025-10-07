@@ -19,6 +19,11 @@
 | HDR Blue Nebulae | | 06/10/2025 | https://www.spacespheremaps.com/wp-content/uploads/HDR_blue_nebulae-1.hdr | |
 | Roter Kamm, Impact crater, Namibia | Matthias Ebert | 06/10/2025 | https://sketchfab.com/3d-models/roter-kamm-impact-crater-namibia-3a1a686c3dd14f1a8ce0a0ae0ccf8588 | CC Attribution-NonCommercial-ShareAlike |
 | Wandering Asteroids Of Andromeda | ARCTIC WOLVES™ | 07/10/2025 | https://sketchfab.com/3d-models/wandering-asteroids-of-andromeda-6a8e84e0fdea43628b8b3ab85b130281 | CC Attribution |
+| earth rumble | Reitanna (Freesound) | 07/10/2025 | https://pixabay.com/sound-effects/earth-rumble-6953/ | Content License |
+| Surprise Sound Effect | Phoenix_Connection_Brazil | 07/10/2025 | https://pixabay.com/sound-effects/surprise-sound-effect-99300/ | Content License |
+| Gasp | Dvideoguy (Freesound) | 07/10/2025 | https://pixabay.com/sound-effects/gasp-6253/ | Content License |
+| Death Star, Etoile de la mort | Loire Dessin Patrimoine 3D | 07/10/2025 | https://sketchfab.com/3d-models/death-star-etoile-de-la-mort-5bbbb1bc4fcc430e83e1fc4e5ef45fad | CC Attribution |
+| moon | RenderX | 07/10/2025 | https://sketchfab.com/3d-models/moon-26cc0b7878bb4d919b68e2be399db466 | CC Attribution |
 
 
 
