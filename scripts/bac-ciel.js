@@ -1,34 +1,57 @@
-const sceneEl = document.querySelector("#scene");
-const THREE = AFRAME.THREE;
+const roc = document.querySelector('#roc');
+const camera = document.querySelector('a-camera');
+const videoEntity = document.querySelector('#cartVideo');
+const videoEl = document.querySelector('#CART_SECRET');
+const clickableElements = document.querySelectorAll('.clickable');
 
-function loadHDRI() {
-  const textureLoader = new THREE.TextureLoader();
-  textureLoader.load("../background/space.jpg", (texture) => {
-    texture.mapping = THREE.EquirectangularReflectionMapping;
-    sceneEl.object3D.background = texture;
+// Fonction tremblement caméra
+function shakeCamera(duration = 2000, magnitude = 0.3) {
+  const start = Date.now();
+  const originalPos = camera.getAttribute('position');
 
-    const renderer = sceneEl.renderer;
-    if (renderer) {
-      const pmremGen = new THREE.PMREMGenerator(renderer);
-      pmremGen.compileEquirectangularShader();
-      sceneEl.object3D.environment = pmremGen.fromEquirectangular(texture).texture;
-      pmremGen.dispose();
+  function shake() {
+    const elapsed = Date.now() - start;
+    if (elapsed < duration) {
+      const offsetX = Math.sin(elapsed * 0.1) * magnitude * (Math.random() * 0.5 + 0.5);
+      const offsetY = Math.cos(elapsed * 0.1) * magnitude * (Math.random() * 0.5 + 0.5);
+      const offsetZ = Math.sin(elapsed * 0.1) * magnitude * (Math.random() * 0.5 + 0.5);
+
+      camera.setAttribute('position', {
+        x: originalPos.x + offsetX,
+        y: originalPos.y + offsetY,
+        z: originalPos.z + offsetZ
+      });
+
+      requestAnimationFrame(shake);
     } else {
-      sceneEl.object3D.environment = texture;
+      camera.setAttribute('position', originalPos);
     }
+  }
 
-    console.log("Background spatial chargé !");
-  }, undefined, (err) => {
-    console.error("Erreur chargement HDRI :", err);
-  });
+  shake();
 }
 
-document.querySelectorAll(".clickable").forEach(el => {
-  el.addEventListener("click", () => {
-    const url = el.getAttribute("data-url");
+// Gestion du clic sur le roc
+roc.addEventListener('click', () => {
+  shakeCamera(2000, 0.5);
+});
+
+// Gestion de la vidéo
+videoEntity.addEventListener('click', () => {
+  if (!videoEntity.getAttribute('visible')) {
+    videoEntity.setAttribute('visible', true);
+    videoEl.play();
+  } else {
+    videoEntity.setAttribute('visible', false);
+    videoEl.pause();
+    videoEl.currentTime = 0;
+  }
+});
+
+// Gestion des portails
+clickableElements.forEach(el => {
+  el.addEventListener('click', () => {
+    const url = el.getAttribute('data-url');
     if (url) window.location.href = url;
   });
 });
-
-// Charger l'espace au démarrage
-loadHDRI();

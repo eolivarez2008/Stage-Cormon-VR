@@ -20,9 +20,13 @@
     <a-asset-item id="hexagone" src="../objects-glb/hexagon_no_textures.glb"></a-asset-item>
     <a-asset-item id="pad" src="../objects-glb/round_platform.glb"></a-asset-item>
     <a-asset-item id="piedestal" src="../objects-glb/rotating_light_platform_final.glb"></a-asset-item>
+    <a-asset-item id="rochet" src="../objects-glb/roc.glb"></a-asset-item>
+    <a-asset-item id="explosionModel" src="../objects-gltf/scene.gltf"></a-asset-item>
+
+    <!-- Vidéos -->
+    <video id="CART_SECRET" loop="true" preload="auto" src="../videos/cart.mp4"></video>
 
     <!-- Images -->
-    <img id="spaceHDR" src="../background/space.jpg">
     <img id="portal1" src="../images/informatique.jpg">
     <img id="portal2" src="../images/cyber.jpg">
     <img id="portal3" src="../images/iot.jpg">
@@ -30,6 +34,8 @@
     <img id="portal5" src="../images/electronique.jpg">
     <img id="portal6" src="../images/reseau.jpg">
   </a-assets>
+
+  <a-sky src="../background/space.jpg"></a-sky>
 
   <!-- Sol / cratère -->
   <a-gltf-model id="cratereModel"
@@ -76,7 +82,7 @@
               color="#b5b5b5" width="4" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     </a-gltf-model>
 
-    <!-- Portail 3 : Domotique / IOT -->
+    <!-- Portail 3 : IOT -->
     <a-gltf-model src="#portailModel" position="-6.45748 0.03514 3.76535" rotation="0 118.86 0" scale="1.7 1.7 1.7" animation-mixer>
       <a-circle class="clickable" data-url="./iot-cormon.html"
                 radius="0.9" position="0 1 0"
@@ -118,13 +124,53 @@
 
   </a-entity>
 
-  <a-camera position="0 1.6 0" wasd-controls="enabled: false">
-    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
-  </a-camera>
+    <!-- ROC -->
+    <a-entity id="rocOrbit" position="0 0 0"        
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 15000; easing: linear">
+    <a-entity id="roc" 
+                gltf-model="#rochet" 
+                position="-1.08453 83.98102 -112.02373"
+                scale="2 2 2" 
+                animation-mixer="timeScale: 0.20"
+                class="clickable">
+    </a-entity>
+    </a-entity>
+
+    <!-- Vidéo cachée pour le secret -->
+    <a-video id="cartVideo" src="#CART_SECRET" toggleclick="" position="0.58828 11.74254 -2.11353" visible="false" class="clickable" rotation="89.29375349775343 -179.9998479605043 -179.9998479605043" scale="10 10 1"></a-video>
+
+    <a-camera position="0 1.6 0" wasd-controls="enabled: false">
+        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+    </a-camera>
+
+    <button id="btn-home">Accueil</button>
 
 </a-scene>
 
 <script type="module" src="../scripts/bac-ciel.js"></script>
+<script>
+    document.getElementById('btn-home').addEventListener('click', () => {
+        window.location.href = '../'; // Chemin vers la page d'accueil
+    });
+</script>
+<style>
+#btn-home {
+    position: fixed;      
+    top: 20px;   
+    right: 20px;      
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;       
+    transition: background-color 0.3s;
+}
+
+#btn-home:hover { background-color: rgba(0, 0, 0, 0.85); }
+</style>
 
 </body>
 </html>

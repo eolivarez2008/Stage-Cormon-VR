@@ -51,7 +51,34 @@
         animation-mixer>
       </a-gltf-model>
 
-    </a-scene>
+    <!-- Bouton Accueil en HTML/CSS -->
+    <button id="btn-home">Accueil</button>
 
-  </body>
+</a-scene>
+
+<script>
+    document.getElementById('btn-home').addEventListener('click', () => {
+        window.location.href = '../'; // Chemin vers la page d'accueil
+    });
+</script>
+<style>
+#btn-home {
+    position: fixed;      
+    top: 20px;   
+    right: 20px;      
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;       
+    transition: background-color 0.3s;
+}
+
+#btn-home:hover { background-color: rgba(0, 0, 0, 0.85); }
+</style>
+
+</body>
 </html>

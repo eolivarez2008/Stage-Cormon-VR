@@ -48,10 +48,35 @@
 
   <a-camera position="0 1.6 0" wasd-controls="enabled: false"></a-camera>
 
+    <!-- Bouton Accueil en HTML/CSS -->
+    <button id="btn-home">Accueil</button>
+
 </a-scene>
 
+<script type="module" src="../scripts/transition.js"></script>
+<script>
+    document.getElementById('btn-home').addEventListener('click', () => {
+        window.location.href = '../'; // Chemin vers la page d'accueil
+    });
+</script>
+<style>
+#btn-home {
+    position: fixed;      
+    top: 20px;   
+    right: 20px;      
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;       
+    transition: background-color 0.3s;
+}
 
-  <script type="module" src="../scripts/transition.js"></script>
+#btn-home:hover { background-color: rgba(0, 0, 0, 0.85); }
+</style>
 
 </body>
 </html>

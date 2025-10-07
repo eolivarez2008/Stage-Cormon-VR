@@ -17,7 +17,7 @@
       <a-asset-item id="modele" src="../objects-glb/cormon2.glb"></a-asset-item>
       <a-asset-item id="tv" src="../objects-glb/tv.glb"></a-asset-item>
       <video id="myVideo"
-              src="../wolf.mp4"
+              src="../videos/wolf.mp4"
               crossorigin="anonymous"
               preload="auto"
               playsinline
@@ -54,9 +54,35 @@
       <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
     </a-camera>
 
-  </a-scene>
+    <!-- Bouton Accueil en HTML/CSS -->
+    <button id="btn-home">Accueil</button>
+
+</a-scene>
 
   <script type="module" src="../scripts/desert-cormon.js"></script>
+<script>
+    document.getElementById('btn-home').addEventListener('click', () => {
+        window.location.href = '../'; // Chemin vers la page d'accueil
+    });
+</script>
+<style>
+#btn-home {
+    position: fixed;      
+    top: 20px;   
+    right: 20px;      
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;       
+    transition: background-color 0.3s;
+}
+
+#btn-home:hover { background-color: rgba(0, 0, 0, 0.85); }
+</style>
 
 </body>
 </html>
