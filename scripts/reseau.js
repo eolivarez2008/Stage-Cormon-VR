@@ -12,7 +12,7 @@ const CONFIG = {
   envLightIntensity: 10,       // Intensité de la lumière directionnelle globale
   ambientIntensity: 10,        // Intensité de la lumière ambiante
   sphereHeight: 3,           // Hauteur fixe du déplacement des sphères
-  linkCount: 30               // Nombre de sphères animées actives simultanément
+  linkCount: 20               // Nombre de sphères animées actives simultanément
 };
 
 const scene = document.querySelector('a-scene');
