@@ -21,6 +21,7 @@
 | maleo2 | | 08/10/2025 | https://www.sweethome3d.com/models/reallusion/male02.zip | CC BY 3.0 US |
 | boyStanding | | 08/10/2025 | https://www.sweethome3d.com/models/reallusion/boyStanding.zip | CC BY 3.0 US |
 | girlStanding | | 08/10/2025 | https://www.sweethome3d.com/models/reallusion/girlStanding.zip | CC BY 3.0 US |
+| Network Server Rack | Khoa Nguyen | 08/10/2025 | https://sketchfab.com/3d-models/network-server-rack-3b15fb8779274844b54e63a40194d450 | CC Attribution |
 
 ## Sons
 

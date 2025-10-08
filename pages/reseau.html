@@ -15,6 +15,7 @@
 <a-scene background="color: black" fog="type: exponential; color: #000000; density: 0.02">
 
     <a-assets>
+      <a-asset-item id="rack" src="../objects-obj/network_server_rack.obj"></a-asset-item>
       <a-asset-item id="city" src="../objects-glb/city.glb"></a-asset-item>
       <a-asset-item id="obj-boy1" src="../objects-obj/boy1.obj"></a-asset-item>
       <a-asset-item id="obj-male1" src="../objects-obj/male1.obj"></a-asset-item>
@@ -26,8 +27,8 @@
   <a-entity light="type: ambient; intensity: 0.4; color: #ffffff"></a-entity>
 
   <!-- Caméra -->
-  <a-camera position="-1.2851905332048994 5 -4.100429036596991" rotation="35.75256641616335 -25.553917662834472 0" wasd-controls="enabled: false">
-    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+  <a-camera position="-3.31045 4.47095 -3.674" rotation="-9.05273316306701 48.7014125861199 0" wasd-controls="enabled: false">
+    <a-entity cursor="rayOrigin: mouse" raycaster="direction: -0.9313079182428123 0.3146278814034221 0.1835071052080367; objects: .clickable; origin: -3.31045 4.47095 -3.674; useWorldCoordinates: true"></a-entity>
   </a-camera>
 
   <!-- Modèles -->
@@ -44,6 +45,8 @@
   <a-obj-model id="female1Model1" src="#obj-female1" scale="0.03 0.03 0.03" position="-28.34477 0 -9.99715" rotation="0 24 0"></a-obj-model>
   <a-obj-model id="female1Model2" src="#obj-female1" scale="0.03 0.03 0.03" position="-6.92892 0 6.22416" rotation="0 90 0"></a-obj-model>
   <a-gltf-model id="cityModel" src="#city" position="161.41489 -5 149.42627" scale="0.8 1.5 0.8"></a-gltf-model>
+  <a-obj-model id="rackModel" src="#rack" position="-4.08212 0.13317 -12.68356" scale="0.0025 0.0025 0.0025" rotation="-90 0 -90"></a-obj-model>
+
 
   <!-- Sol -->
   <a-plane 
