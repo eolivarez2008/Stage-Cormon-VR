@@ -16,6 +16,7 @@
 | Wandering Asteroids Of Andromeda | ARCTIC WOLVES™ | 07/10/2025 | https://sketchfab.com/3d-models/wandering-asteroids-of-andromeda-6a8e84e0fdea43628b8b3ab85b130281 | CC Attribution |
 | Death Star, Etoile de la mort | Loire Dessin Patrimoine 3D | 07/10/2025 | https://sketchfab.com/3d-models/death-star-etoile-de-la-mort-5bbbb1bc4fcc430e83e1fc4e5ef45fad | CC Attribution |
 | moon | RenderX | 07/10/2025 | https://sketchfab.com/3d-models/moon-26cc0b7878bb4d919b68e2be399db466 | CC Attribution |
+| City | Mateusz Woliński | 08/10/2025 | https://sketchfab.com/3d-models/city-1f50f0d6ec5a493d8e91d7db1106b324 | CC Attribution |
 
 ## Sons
 
