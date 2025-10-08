@@ -15,25 +15,44 @@
 <a-scene background="color: black" fog="type: exponential; color: #000000; density: 0.02">
 
     <a-assets>
-      <a-asset-item id="obj-boy1" src="../objects-obj/boy1.obj"></a-asset-item>
       <a-asset-item id="city" src="../objects-glb/city.glb"></a-asset-item>
+      <a-asset-item id="obj-boy1" src="../objects-obj/boy1.obj"></a-asset-item>
+      <a-asset-item id="obj-male1" src="../objects-obj/male1.obj"></a-asset-item>
+      <a-asset-item id="obj-girl1" src="../objects-obj/girl1.obj"></a-asset-item>
+      <a-asset-item id="obj-female1" src="../objects-obj/female1.obj"></a-asset-item>
     </a-assets>
 
   <!-- Lumières -->
   <a-entity light="type: ambient; intensity: 0.4; color: #ffffff"></a-entity>
 
   <!-- Caméra -->
-  <a-camera position="-1.2851905332048994 1.6 -4.100429036596991" rotation="35.75256641616335 -25.553917662834472 0" wasd-controls="enabled: false">
+  <a-camera position="-1.2851905332048994 5 -4.100429036596991" rotation="35.75256641616335 -25.553917662834472 0" wasd-controls="enabled: false">
     <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
   </a-camera>
 
   <!-- Modèles -->
-  <a-obj-model id="boy1Model" src="#obj-boy1" scale="0.03 0.03 0.03" position="-37.97655 0 1.65657" rotation="0 90 0"></a-obj-model>
-  <a-obj-model id="boy1Model1" src="#obj-boy1" scale="0.03 0.03 0.03" position="19.79863 0 -1.82111" rotation="0 90 0"></a-obj-model>
-  <a-obj-model id="boy1Model2" src="#obj-boy1" scale="0.03 0.03 0.03" position="-6.28038 0 13.25626" rotation="0 180 0"></a-obj-model>
-  <a-obj-model id="boy1Model3" src="#obj-boy1" scale="0.03 0.03 0.03" position="-19.46777 0 -13.60611" rotation="0 90 0"></a-obj-model>
-  <a-obj-model id="boy1Model4" src="#obj-boy1" scale="0.03 0.03 0.03" position="0 -1 40" rotation="0 180 0"></a-obj-model>
-  <a-gltf-model id="cityModel" src="#city" position="161.41489 0 149.42627" scale="0.8 1.5 0.8"></a-gltf-model>
+  <a-obj-model id="boy1Model" src="#obj-boy1" scale="0.03 0.03 0.03" position="-18.1029 0 -3.45344" rotation="0 90 0"></a-obj-model>
+  <a-obj-model id="boy1Model1" src="#obj-boy1" scale="0.03 0.03 0.03" position="19.79863 0 -1.82111" rotation="0 -90 0"></a-obj-model>
+  <a-obj-model id="boy1Model2" src="#obj-boy1" scale="0.03 0.03 0.03" position="-5.0768 0 8.49889" rotation="0 180 0"></a-obj-model>
+  <a-obj-model id="male1Model" src="#obj-male1" scale="0.03 0.03 0.03" position="7.21258 0 -2.83097" rotation="0 162.76 0"></a-obj-model>
+  <a-obj-model id="male1Model1" src="#obj-male1" scale="0.03 0.03 0.03" position="19.6021 0 -10.63303" rotation="0 -11.79 0"></a-obj-model>
+  <a-obj-model id="male1Model2" src="#obj-male1" scale="0.03 0.03 0.03" position="16.11658 0 -17.42163" rotation="0 -90 0"></a-obj-model>
+  <a-obj-model id="girl1Model" src="#obj-girl1" scale="0.03 0.03 0.03" position="-15.92731 0 -12.81272" rotation="0 59.99 0"></a-obj-model>
+  <a-obj-model id="girl1Model1" src="#obj-girl1" scale="0.03 0.03 0.03" position="0.85908 0 3.12557" rotation="0 -90 0"></a-obj-model>
+  <a-obj-model id="girl1Model2" src="#obj-girl1" scale="0.03 0.03 0.03" position="6.75626 0 -10.04006" rotation="0 -90 0"></a-obj-model>
+  <a-obj-model id="female1Model" src="#obj-female1" scale="0.03 0.03 0.03" position="-10.42287 0 2.40721" rotation="0 180 0"></a-obj-model>
+  <a-obj-model id="female1Model1" src="#obj-female1" scale="0.03 0.03 0.03" position="-28.34477 0 -9.99715" rotation="0 24 0"></a-obj-model>
+  <a-obj-model id="female1Model2" src="#obj-female1" scale="0.03 0.03 0.03" position="-6.92892 0 6.22416" rotation="0 90 0"></a-obj-model>
+  <a-gltf-model id="cityModel" src="#city" position="161.41489 -5 149.42627" scale="0.8 1.5 0.8"></a-gltf-model>
+
+  <!-- Sol -->
+  <a-plane 
+    position="0 0 0"
+    rotation="-90 0 0"
+    width="1000"
+    height="1000"
+    material="color: #000000; metalness: 0.9; roughness: 0.05; emissive: #111111; emissiveIntensity: 0.3; reflectivity: 0.8">
+  </a-plane>
 
   <!-- Boules -->
   <a-entity id="data-stream"></a-entity>
@@ -44,21 +63,28 @@
 </a-scene>
 
 <script type="module" src="../scripts/reseau.js"></script>
+<script>
+    document.getElementById('btn-home').addEventListener('click', () => {
+        window.location.href = '../'; // Chemin vers la page d'accueil
+    });
+</script>
 
 <style>
 #btn-home {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #00ff00;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  z-index: 1000;
+    position: fixed;      
+    top: 20px;   
+    right: 20px;      
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;       
+    transition: background-color 0.3s;
 }
+
 #btn-home:hover { background-color: rgba(0, 0, 0, 0.85); }
 </style>
 

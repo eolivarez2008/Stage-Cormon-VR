@@ -1,70 +1,63 @@
 // === CONFIGURATION ===
 const CONFIG = {
-  matrixColor: '#FF0000',
-  sphereColor: '#FF0000',
-  sphereRadius: 0.15,
-  sphereIntensity: 300,
-  sphereSpeed: 0.04,     // vitesse de base moyenne
-  matrixFontSize: 32,
-  matrixTrail: 0.05,
-  matrixReflectivity: 0.6,
-  envLightIntensity: 10,
-  ambientIntensity: 10,
-  sphereHeight: 1.6 // Hauteur fixe des boules
+  matrixColorGLB: '#FF0000',   // Couleur des lettres Matrix pour les modèles GLB / GLTF
+  matrixColorOBJ: '#00FF00',   // Couleur des lettres Matrix pour les modèles OBJ
+  sphereColor: '#00FF00',      // Couleur des sphères lumineuses
+  sphereRadius: 0.15,          // Taille (rayon) des sphères
+  sphereIntensity: 300,        // Intensité de la lumière émise par les sphères
+  sphereSpeed: 0.02,           // Vitesse moyenne de déplacement des sphères
+  matrixFontSize: 32,          // Taille de la police utilisée pour les lettres Matrix
+  matrixTrail: 0.05,           // Transparence de la traînée Matrix (effet de chute des lettres)
+  matrixReflectivity: 0.6,     // Réflectivité du matériau Matrix appliqué sur les modèles
+  envLightIntensity: 10,       // Intensité de la lumière directionnelle globale
+  ambientIntensity: 10,        // Intensité de la lumière ambiante
+  sphereHeight: 3,           // Hauteur fixe du déplacement des sphères
+  linkCount: 30               // Nombre de sphères animées actives simultanément
 };
 
-// === TRAJECTOIRES PAR ID ===
-const TRAJECTORIES = [
-  { startId: 'boy1Model', endId: 'boy1Model3' },
-  { startId: 'boy1Model2', endId: 'boy1Model4' },
-  { startId: 'boy1Model1', endId: 'boy1Model3' }
-];
-
-// === INITIALISATION SCÈNE ===
 const scene = document.querySelector('a-scene');
 
-// ------------------------
-// Texture Matrix animée
-// ------------------------
-const canvas = document.createElement('canvas');
-canvas.width = 1024;
-canvas.height = 1024;
-const ctx = canvas.getContext('2d');
-const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const cols = Math.floor(canvas.width / CONFIG.matrixFontSize);
-const drops = Array(cols).fill().map(() => ({
-  y: Math.random() * canvas.height,
-  speed: 3 + Math.random() * 5
-}));
-const texture = new THREE.CanvasTexture(canvas);
+// === TEXTURE MATRIX ANIMÉE ===
+function createMatrixTexture(color) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1024;
+  canvas.height = 1024;
+  const ctx = canvas.getContext('2d');
+  const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const cols = Math.floor(canvas.width / CONFIG.matrixFontSize);
+  const drops = Array(cols).fill().map(() => ({
+    y: Math.random() * canvas.height,
+    speed: 3 + Math.random() * 5
+  }));
+  const texture = new THREE.CanvasTexture(canvas);
 
-function animateMatrix() {
-  ctx.fillStyle = `rgba(0,0,0,${CONFIG.matrixTrail})`;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = CONFIG.matrixColor;
-  ctx.font = CONFIG.matrixFontSize + 'px monospace';
-
-  drops.forEach((drop, i) => {
-    const text = chars[Math.floor(Math.random() * chars.length)];
-    ctx.fillText(text, i * CONFIG.matrixFontSize, drop.y);
-    drop.y += drop.speed;
-    if (drop.y > canvas.height) {
-      drop.y = 0;
-      drop.speed = 3 + Math.random() * 5;
-    }
-  });
-
-  texture.needsUpdate = true;
-  requestAnimationFrame(animateMatrix);
+  function animateMatrix() {
+    ctx.fillStyle = `rgba(0,0,0,${CONFIG.matrixTrail})`;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = color;
+    ctx.font = CONFIG.matrixFontSize + 'px monospace';
+    drops.forEach((drop, i) => {
+      const text = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(text, i * CONFIG.matrixFontSize, drop.y);
+      drop.y += drop.speed;
+      if (drop.y > canvas.height) drop.y = 0;
+    });
+    texture.needsUpdate = true;
+    requestAnimationFrame(animateMatrix);
+  }
+  animateMatrix();
+  return texture;
 }
-animateMatrix();
 
-// ------------------------
-// Appliquer la texture Matrix aux modèles 3D
-// ------------------------
+const textureGLB = createMatrixTexture(CONFIG.matrixColorGLB);
+const textureOBJ = createMatrixTexture(CONFIG.matrixColorOBJ);
+
+// === APPLICATION DES TEXTURES ===
 document.querySelectorAll('a-gltf-model, a-obj-model').forEach(model => {
   model.addEventListener('model-loaded', () => {
+    const isOBJ = model.tagName === 'A-OBJ-MODEL';
+    const texture = isOBJ ? textureOBJ : textureGLB;
+
     model.object3D.traverse(node => {
       if (node.isMesh) {
         const mat = new THREE.MeshStandardMaterial({
@@ -83,9 +76,7 @@ document.querySelectorAll('a-gltf-model, a-obj-model').forEach(model => {
   });
 });
 
-// ------------------------
-// Lumières globales
-// ------------------------
+// === LUMIÈRES ===
 const envLight = document.createElement('a-entity');
 envLight.setAttribute(
   'light',
@@ -100,20 +91,16 @@ ambientLight.setAttribute(
 );
 scene.appendChild(ambientLight);
 
-// ------------------------
-// Création et animation des boules avec IDs
-// ------------------------
+// === OBJETS DISPONIBLES ===
+const objModels = Array.from(document.querySelectorAll('a-obj-model')).filter(o => o.id);
+if (objModels.length < 2) {
+  console.warn("⚠️ Pas assez d'objets pour créer des liaisons !");
+}
+
+// === CRÉATION DES BOULES DYNAMIQUES ===
 const spheres = [];
 
-TRAJECTORIES.forEach((path, i) => {
-  const startObj = document.getElementById(path.startId);
-  const endObj = document.getElementById(path.endId);
-
-  if (!startObj || !endObj) {
-    console.warn(`❌ Trajectoire ignorée : ${path.startId} ou ${path.endId} introuvable.`);
-    return;
-  }
-
+for (let i = 0; i < CONFIG.linkCount; i++) {
   const sphere = document.createElement('a-sphere');
   sphere.setAttribute('radius', CONFIG.sphereRadius);
   sphere.setAttribute('color', CONFIG.sphereColor);
@@ -130,41 +117,46 @@ TRAJECTORIES.forEach((path, i) => {
   );
   sphere.appendChild(light);
 
-  // Décalage aléatoire et variation de vitesse
-  const offset = Math.random();
-  const speedFactor = 0.8 + Math.random() * 0.4;
+  const startObj = objModels[Math.floor(Math.random() * objModels.length)];
+  let endObj;
+  do {
+    endObj = objModels[Math.floor(Math.random() * objModels.length)];
+  } while (endObj === startObj);
 
   spheres.push({
     sphere,
     startObj,
     endObj,
-    t: offset,             
-    speed: CONFIG.sphereSpeed * speedFactor
+    t: Math.random(),
+    speed: CONFIG.sphereSpeed * (0.8 + Math.random() * 0.4)
   });
-});
+}
 
-// ------------------------
-// Animation asynchrone des boules
-// ------------------------
+// === ANIMATION DES BOULES ===
 function animateSpheres() {
   spheres.forEach(obj => {
     obj.t += obj.speed;
+    if (obj.t >= 1) {
+      obj.t = 0;
 
-    if (obj.t >= 1) obj.t = 0;
+      // Nouveau trajet aléatoire
+      obj.startObj = obj.endObj;
+      do {
+        obj.endObj = objModels[Math.floor(Math.random() * objModels.length)];
+      } while (obj.endObj === obj.startObj);
+    }
 
     const startPos = new THREE.Vector3();
     const endPos = new THREE.Vector3();
     obj.startObj.object3D.getWorldPosition(startPos);
     obj.endObj.object3D.getWorldPosition(endPos);
 
-    // Hauteur fixe
     startPos.y = CONFIG.sphereHeight;
     endPos.y = CONFIG.sphereHeight;
 
     const pos = new THREE.Vector3().lerpVectors(startPos, endPos, obj.t);
     obj.sphere.setAttribute('position', `${pos.x} ${pos.y} ${pos.z}`);
   });
-
   requestAnimationFrame(animateSpheres);
 }
 animateSpheres();
