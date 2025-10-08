@@ -19,7 +19,7 @@
     <a-asset-item id="cratere" src="../objects-glb/cratere.glb"></a-asset-item>
     <a-asset-item id="portailModel" src="../objects-glb/portal-animated.glb"></a-asset-item>
     <a-asset-item id="pad" src="../objects-glb/round_platform.glb"></a-asset-item>
-    <a-asset-item id="piedestal" src="../objects-glb/rotating_light_platform_final.glb"></a-asset-item>
+    <a-asset-item id="piedestal" src="../objects-glb/logo-sol.glb"></a-asset-item>
     <a-asset-item id="rochet" src="../objects-glb/roc.glb"></a-asset-item>
     <a-asset-item id="moon" src="../objects-glb/moon.glb"></a-asset-item>
     <a-asset-item id="shootingStarModel" src="../objects-glb"></a-asset-item>
@@ -55,7 +55,7 @@
   <a-gltf-model id="pad-sol" src="#pad" position="0 -0.24 0" rotation="0 0 0" scale="4 4 4" shadow="receive: true"></a-gltf-model>
 
   <!-- Piedestal -->
-  <a-gltf-model id="piedestalModel" src="#piedestal" position="0 -0.12 0" rotation="0 0 0" scale="0.08 0.08 0.08" shadow="cast: true; receive: true"></a-gltf-model>
+    <a-gltf-model id="piedestalModel" src="#piedestal" position="0 -0.34038 0" scale="0.7 0.7 0.7" shadow="" gltf-model="../objects-glb/logo-sol.glb"></a-gltf-model>
 
     <!-- Portails -->
     <a-entity id="portails">
@@ -80,7 +80,7 @@
         <!-- Portail 4 : Lycée Cormontaigne -->
         <a-gltf-model src="#portailModel" position="-0.16931 0 -7.49207" scale="1.7 1.7 1.7" animation-mixer shadow="cast: true; receive: true">
             <a-circle class="portal-clickable" data-key="lycee" radius="0.9" position="0 1 0" material="shader: flat; src: #portal4; side: double"></a-circle>
-            <a-text value="Lycee Cormontaigne" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+            <a-text value="Lycee Louis de \n Cormontaigne" look-at="[camera]" position="0 0.25 0.28" align="center" color="#b5b5b5" width="3" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
         </a-gltf-model>
 
         <!-- Portail 5 : Électronique -->
@@ -111,7 +111,7 @@
                         shadow="cast: true; receive: true">
             </a-gltf-model>
 
-            <!-- 💡 Lumière principale : la lune éclaire la scène -->
+            <!-- Lumière principale : la lune éclaire la scène -->
             <a-entity id="moonToScene"
                     light="type: directional; intensity: 1.6; color: #f8faff; castShadow: true;
                             shadowCameraFar: 200; shadowCameraTop: 60; shadowCameraBottom: -60;
@@ -120,7 +120,7 @@
                     target="#cratereModel">
             </a-entity>
 
-            <!-- 💡 Lumière inverse : le cratère éclaire légèrement la lune (pour qu’elle soit visible) -->
+            <!-- Lumière inverse : le cratère éclaire légèrement la lune (pour qu’elle soit visible) -->
             <a-entity id="sceneToMoon"
                     light="type: directional; intensity: 0.9; color: #ffffff;"
                     position="0 -40 80"
