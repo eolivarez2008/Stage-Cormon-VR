@@ -1,0 +1,19 @@
+# Exported from 3D Builder
+
+newmtl White_0
+Kd 0.556144 0.556144 0.556144
+
+newmtl Camera.001_0
+Kd 0.759353 0.759353 0.759353
+
+newmtl Camera.002_0
+Kd 0.336893 0.336893 0.336893
+
+newmtl Flash_0
+Kd 0.796786 0.796786 0.796786
+
+newmtl Case_0
+Kd 0.000000 0.000000 0.000000
+
+newmtl Screen_0
+Kd 0.401065 0.401065 0.401065

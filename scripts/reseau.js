@@ -181,6 +181,7 @@ scene.addEventListener('loaded', () => {
         const TEXT_WIDTH = 6 + index;
         const TEXT_SCALE = 20 + index;
 
+        // --- Texte principal ---
         const txt = document.createElement('a-text');
         txt.setAttribute('value', vertical);
         txt.setAttribute('align', 'center');
@@ -212,6 +213,30 @@ scene.addEventListener('loaded', () => {
         txt.object3D.position.addScaledVector(forward, 0.3);
 
         scene.appendChild(txt);
+
+        // --- Ombre noire décalée ---
+        const shadowTxt = document.createElement('a-text');
+        shadowTxt.setAttribute('value', vertical);
+        shadowTxt.setAttribute('align', 'center');
+        shadowTxt.setAttribute('font', 'https://cdn.aframe.io/fonts/Roboto-msdf.json');
+        shadowTxt.setAttribute('shader', 'msdf');
+        shadowTxt.setAttribute('side', 'double');
+        shadowTxt.setAttribute('color', '#000000'); // noir solide
+        shadowTxt.setAttribute('width', TEXT_WIDTH);
+        shadowTxt.object3D.scale.set(TEXT_SCALE, TEXT_SCALE, 1);
+
+        // Décalage X, Y, Z pour créer l'ombre portée
+        const offsetZ = -0.05;  // derrière
+        const offsetX = 0.02;   // léger décalage horizontal
+        const offsetY = -0.02;  // léger décalage vertical
+        shadowTxt.object3D.position.set(
+          txt.object3D.position.x + offsetX,
+          txt.object3D.position.y + offsetY,
+          txt.object3D.position.z + offsetZ
+        );
+        shadowTxt.object3D.rotation.copy(txt.object3D.rotation);
+
+        scene.appendChild(shadowTxt);
 
         // Fonction récursive pour changer le texte
         function cycleChange() {
@@ -258,6 +283,9 @@ scene.addEventListener('loaded', () => {
               from: `${txt.object3D.scale.x * 1.1} ${txt.object3D.scale.y * 1.1} 1`,
               to: `${txt.object3D.scale.x} ${txt.object3D.scale.y} 1`
             });
+
+            // Mettre à jour l'ombre pour suivre le texte
+            shadowTxt.setAttribute('value', newVertical);
           }, 400);
 
           // Intervalle aléatoire entre 10 et 20 sec
@@ -271,6 +299,7 @@ scene.addEventListener('loaded', () => {
     })
     .catch(err => console.error('Erreur chargement des mots réseau:', err));
 });
+
 
 animateSpheres();
 
@@ -314,7 +343,7 @@ function showPhone() {
   phoneVisible = false;
 
   const distance = 1.5;      // distance devant la caméra
-  const scale = 0.202;       // taille globale du téléphone
+  const scale = 0.012;       // taille globale du téléphone
   const posY = -1.15;        // hauteur devant la caméra
 
   // Clone du téléphone
@@ -331,7 +360,7 @@ function showPhone() {
   // Taille et position
   phoneClone.setAttribute('scale', `${scale} ${scale} ${scale}`);
   phoneClone.setAttribute('position', `0 ${posY} -${distance}`);
-  phoneClone.setAttribute('rotation', '0 0 0');
+  phoneClone.setAttribute('rotation', '-90 0 0');
 
   // Animation de montée
   phoneClone.setAttribute('animation__rise', {
@@ -369,8 +398,8 @@ function playVideoOnPhone() {
   videoScreen.setAttribute('src', '#phoneVideo');
   videoScreen.setAttribute('width', 0.5); 
   videoScreen.setAttribute('height', 0.3);
-  videoScreen.setAttribute('position', '0 0.01949 -1.2'); 
-  videoScreen.setAttribute('scale', '1.95374 4.78038 1');
+  videoScreen.setAttribute('position', '0 0.019 -1.2'); 
+  videoScreen.setAttribute('scale', '1.73374 5.517 1');
   videoScreen.setAttribute('rotation', '0 0 0');
 
   // Attache au wrapper devant la caméra
