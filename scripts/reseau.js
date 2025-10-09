@@ -12,7 +12,7 @@ const CONFIG = {
   envLightIntensity: 10,       // Intensité de la lumière directionnelle globale
   ambientIntensity: 10,        // Intensité de la lumière ambiante
   sphereHeight: 3,           // Hauteur fixe du déplacement des sphères
-  linkCount: 30               // Nombre de sphères animées actives simultanément
+  linkCount: 20               // Nombre de sphères animées actives simultanément
 };
 
 const scene = document.querySelector('a-scene');
@@ -160,69 +160,115 @@ function animateSpheres() {
   requestAnimationFrame(animateSpheres);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  // On attend que la scène A-Frame soit prête
-  const scene = document.querySelector('a-scene');
-  if (!scene) {
-    console.error("❌ A-Frame scene non trouvée !");
-    return;
-  }
+scene.addEventListener('loaded', () => {
+  fetch('../data/network_words.json')
+    .then(res => res.json())
+    .then(data => {
+      const words = data.words.filter(w => w.length <= 7); // max 7 caractères
+      const walls = document.querySelectorAll('[id^="wallZone"]');
 
-  scene.addEventListener('loaded', () => {
-    fetch('../data/network_words.json')
-      .then(res => res.json())
-      .then(data => {
-        const words = data.words;
-        const walls = document.querySelectorAll('[id^="wallZone"]');
-        const textElements = [];
+      // Palette de couleurs futuristes / Matrix
+      const COLORS = ['#00FF9D', '#00FFD1', '#00BFFF', '#39FF14', '#00FFFF', '#00C4FF', '#66FF99', '#80FFEA', '#0FF0FC'];
 
-        walls.forEach((wall) => {
-          const word = words[Math.floor(Math.random() * words.length)].toUpperCase();
-          const vertical = word.split('').join('\n');
+      walls.forEach((wall, index) => {
+        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+        const word = words[Math.floor(Math.random() * words.length)].toUpperCase();
+        const vertical = word.split('').join('\n');
 
-          const txt = document.createElement('a-text');
-          txt.setAttribute('value', vertical);
-          txt.setAttribute('color', '#00FFD1');
-          txt.setAttribute('align', 'center');
-          txt.setAttribute('font', 'https://cdn.aframe.io/fonts/Roboto-msdf.json');
-          txt.setAttribute('shader', 'msdf');
-          txt.setAttribute('side', 'double');
+        const TEXT_WIDTH = 6 + index; // tu peux ajuster globalement
+        const TEXT_SCALE = 20 + index; // idem
 
-          // Taille automatique en fonction du mur
-          const wallScale = wall.getAttribute('scale');
-          const wallHeight = wallScale ? wallScale.y * 2 : 5; // par défaut 5 si pas de scale
-          txt.setAttribute('width', wallScale.x * 1.5);
-          txt.object3D.scale.set(1, wallHeight / 6, 1);
-
-          // Positionnement exact sur le mur
-          const wallPos = wall.object3D.position.clone();
-          const wallRot = wall.object3D.rotation.clone();
-
-          txt.object3D.position.set(wallPos.x, wallPos.y, wallPos.z);
-          txt.object3D.rotation.copy(wallRot);
-
-          // Décalage vers l'extérieur du mur
-          const forward = new THREE.Vector3(0, 0, 1);
-          forward.applyEuler(wallRot);
-          txt.object3D.position.addScaledVector(forward, 0.3);
-
-          scene.appendChild(txt);
-          textElements.push({ el: txt, wall });
-
-          console.log(`✅ Mot ajouté sur ${wall.id}: ${word}`);
+        const txt = document.createElement('a-text');
+        txt.setAttribute('value', vertical);
+        txt.setAttribute('align', 'center');
+        txt.setAttribute('font', 'https://cdn.aframe.io/fonts/Roboto-msdf.json');
+        txt.setAttribute('shader', 'msdf');
+        txt.setAttribute('side', 'double');
+        txt.setAttribute('color', color);
+        txt.setAttribute('opacity', 0.2); // semi-transparent
+        txt.setAttribute('material', {
+          color: color,
+          opacity: 0.4,
+          transparent: true,
+          metalness: 0.3,
+          roughness: 0.1,
+          emissive: color,
+          emissiveIntensity: 0.5
         });
+        txt.setAttribute('width', TEXT_WIDTH);
+        txt.object3D.scale.set(TEXT_SCALE, TEXT_SCALE, 1);
 
-        // === 🔁 Changement automatique toutes les 10 secondes ===
-        setInterval(() => {
-          textElements.forEach(({ el }) => {
-            const newWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
-            const vertical = newWord.split('').join('\n');
-            el.setAttribute('value', vertical);
+        // Positionner sur le mur
+        const wallPos = wall.object3D.position.clone();
+        const wallRot = wall.object3D.rotation.clone();
+        txt.object3D.position.set(wallPos.x, wallPos.y, wallPos.z);
+        txt.object3D.rotation.copy(wallRot);
+
+        const forward = new THREE.Vector3(0, 0, 1);
+        forward.applyEuler(wallRot);
+        txt.object3D.position.addScaledVector(forward, 0.3);
+
+        scene.appendChild(txt);
+
+        // Fonction récursive pour changer le texte
+        function cycleChange() {
+          const newWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+          const newVertical = newWord.split('').join('\n');
+          const newColor = COLORS[Math.floor(Math.random() * COLORS.length)];
+
+          // Supprimer anciennes animations
+          ['fadeout', 'fadein', 'glow'].forEach(anim => {
+            if (txt.hasAttribute(`animation__${anim}`)) txt.removeAttribute(`animation__${anim}`);
           });
-        }, 10000);
-      })
-      .catch(err => console.error('❌ Erreur chargement des mots réseau:', err));
-  });
+
+          // Fade out
+          txt.setAttribute('animation__fadeout', {
+            property: 'opacity',
+            from: 0.1,
+            to: 0,
+            dur: 400,
+            easing: 'easeInOutQuad'
+          });
+
+          setTimeout(() => {
+            txt.setAttribute('value', newVertical);
+            txt.setAttribute('color', newColor);
+
+            // Forcer la mise à jour du shader MSDF
+            txt.getObject3D('mesh')?.traverse(node => { if (node.material) node.material.needsUpdate = true; });
+
+            // Fade in
+            txt.setAttribute('animation__fadein', {
+              property: 'opacity',
+              from: 0,
+              to: 0.2,
+              dur: 400,
+              easing: 'easeInOutQuad'
+            });
+
+            // Pulse léger (effet Matrix lumineux)
+            txt.setAttribute('animation__glow', {
+              property: 'scale',
+              dir: 'alternate',
+              dur: 300,
+              easing: 'easeOutQuad',
+              from: `${txt.object3D.scale.x * 1.1} ${txt.object3D.scale.y * 1.1} 1`,
+              to: `${txt.object3D.scale.x} ${txt.object3D.scale.y} 1`
+            });
+          }, 400);
+
+          // Intervalle aléatoire entre 10 et 20 sec
+          const delay = 10000 + Math.random() * 10000;
+          setTimeout(cycleChange, delay);
+        }
+
+        // Premier déclenchement avec léger délai
+        setTimeout(cycleChange, 1000 + Math.random() * 5000);
+      });
+    })
+    .catch(err => console.error('❌ Erreur chargement des mots réseau:', err));
 });
+
+
 
 animateSpheres();

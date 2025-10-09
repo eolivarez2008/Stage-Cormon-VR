@@ -14,21 +14,29 @@
 
 <a-scene background="color: black" fog="type: exponential; color: #000000; density: 0.02" stats>
 
-    <a-assets>
-      <a-asset-item id="city" src="../objects-glb/city.glb"></a-asset-item>
-      <a-asset-item id="obj-boy1" src="../objects-obj/boy1.obj"></a-asset-item>
-      <a-asset-item id="obj-male1" src="../objects-obj/male1.obj"></a-asset-item>
-      <a-asset-item id="obj-girl1" src="../objects-obj/girl1.obj"></a-asset-item>
-      <a-asset-item id="obj-female1" src="../objects-obj/female1.obj"></a-asset-item>
-      <a-asset-item id="rack" src="../objects-obj/network_server_rack.obj"></a-asset-item>
-    </a-assets>
+  <!-- Assets -->
+  <a-assets>
+    <a-asset-item id="city" src="../objects-glb/city.glb"></a-asset-item>
+    <a-asset-item id="obj-boy1" src="../objects-obj/boy1.obj"></a-asset-item>
+    <a-asset-item id="obj-male1" src="../objects-obj/male1.obj"></a-asset-item>
+    <a-asset-item id="obj-girl1" src="../objects-obj/girl1.obj"></a-asset-item>
+    <a-asset-item id="obj-female1" src="../objects-obj/female1.obj"></a-asset-item>
+    <a-asset-item id="rack" src="../objects-obj/network_server_rack.obj"></a-asset-item>
+  </a-assets>
 
   <!-- Lumières -->
   <a-entity light="type: ambient; intensity: 0.4; color: #ffffff"></a-entity>
 
   <!-- Caméra -->
-  <a-camera position="-3.31045 4.47095 -3.674" rotation="-9.05273316306701 48.7014125861199 0" wasd-controls="enabled: false">
-    <a-entity cursor="rayOrigin: mouse" raycaster="direction: -0.9313079182428123 0.3146278814034221 0.1835071052080367; objects: .clickable; origin: -3.31045 4.47095 -3.674; useWorldCoordinates: true"></a-entity>
+  <a-camera 
+      position="-3.31 4.47 -3.67"
+      rotation="-9.05 48.70 0"
+      wasd-controls="enabled: false"
+      look-controls="pointerLockEnabled: false; touchEnabled: true; magicWindowTrackingEnabled: true">
+    <a-entity 
+        cursor="rayOrigin: mouse" 
+        raycaster="direction: -0.93 0.31 0.18; objects: .clickable; origin: -3.31 4.47 -3.67; useWorldCoordinates: true">
+    </a-entity>
   </a-camera>
 
   <!-- Modèles -->
@@ -47,18 +55,17 @@
   <a-gltf-model id="cityModel" src="#city" position="161.41489 -5 149.42627" scale="0.8 1.5 0.8"></a-gltf-model>
   <a-obj-model id="rackModel1" src="#rack" position="-4.08212 0 -12.68356" scale="0.0025 0.0025 0.0025" rotation="-90 0 -90"></a-obj-model>
   <a-obj-model id="rackModel2" src="#rack" position="-23.06757 0 -17.4599" scale="0.0025 0.0025 0.0025" rotation="-90 20 -90"></a-obj-model>
-  <a-obj-model id="rackModel3" src="#rack" position="1.38436 0 12.45386" scale="0.004 0.0025 0.004" rotation="-90 -90 -90"></a-obj-model>
+  <a-obj-model id="rackModel3" src="#rack" position="1.38436 0 12.45386" scale="0.0025 0.0025 0.0025" rotation="-90 -90 -90"></a-obj-model>
   <a-obj-model id="rackModel4" src="#rack" position="19.43176 0 2.95674" scale="0.002 0.002 0.002" rotation="-90 -90 -90"></a-obj-model>
   <a-obj-model id="rackModel5" src="#rack" position="-33.61924 0 5.09665" scale="0.0025 0.0025 0.0025" rotation="-90 180 -90"></a-obj-model>
 
-<!-- Boxes -->
-<a-box id="wallZone" position="1.13504 24.95153 -14.19582" width="2" height="5" depth="0.1" visible="false" scale="7.33765 10.11334 1"></a-box>
-<a-box id="wallZone1" position="3.21442 34.7176 11.49146" width="2" height="5" depth="0.1" visible="false" scale="7.33765 13.66977 1" rotation="0 -90 0"></a-box>
-<a-box id="wallZone2" position="-12.64411 40.88774 3.80877" width="2" height="5" depth="0.1" visible="false" scale="3 17 1.01516" rotation="0 180 0"></a-box>
-
-<!-- Texte qui sera affiché -->
-<a-text class="network-word" position="0 0 0" rotation="0 0 0"></a-text>
-
+  <!-- Boxes pour le texte -->
+  <a-box id="wallZone" position="1.13504 24.95153 -14.19582" width="2" height="5" depth="0.1" visible="false" scale="7.33765 10.11334 1"></a-box>
+  <a-box id="wallZone1" position="3.21 34.7176 11.49146" width="2" height="5" depth="0.1" visible="false" scale="7.33765 13.66977 1" rotation="0 -90 0"></a-box>
+  <a-box id="wallZone2" position="-11.37969 38.11236 2.87432" width="2" height="5" depth="0.1" visible="false" scale="3 15 1.01516" rotation="0 180 0"></a-box>
+  <a-box id="wallZone3" position="-25.27 37.413 -18.085" width="2" height="5" depth="0.1" visible="false" scale="3.13 14.88 1.015" rotation="-0.0034 21.111 -0.00229"></a-box>
+  <a-box id="wallZone4" position="-36.91871 37.68835 5.64102" width="2" height="5" depth="0.1" visible="false" scale="3 15 1.01516" rotation="0 180 0"></a-box>
+  <a-box id="wallZone5" position="53.93502 34.47066 -19.33013" width="2" height="5" depth="0.1" visible="false" scale="3 15 1.01516" rotation="0 -90 0"></a-box>
 
   <!-- Sol -->
   <a-plane 
