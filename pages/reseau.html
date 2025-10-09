@@ -12,15 +12,15 @@
 </head>
 <body>
 
-<a-scene background="color: black" fog="type: exponential; color: #000000; density: 0.02">
+<a-scene background="color: black" fog="type: exponential; color: #000000; density: 0.02" stats>
 
     <a-assets>
-      <a-asset-item id="rack" src="../objects-obj/network_server_rack.obj"></a-asset-item>
       <a-asset-item id="city" src="../objects-glb/city.glb"></a-asset-item>
       <a-asset-item id="obj-boy1" src="../objects-obj/boy1.obj"></a-asset-item>
       <a-asset-item id="obj-male1" src="../objects-obj/male1.obj"></a-asset-item>
       <a-asset-item id="obj-girl1" src="../objects-obj/girl1.obj"></a-asset-item>
       <a-asset-item id="obj-female1" src="../objects-obj/female1.obj"></a-asset-item>
+      <a-asset-item id="rack" src="../objects-obj/network_server_rack.obj"></a-asset-item>
     </a-assets>
 
   <!-- Lumières -->
@@ -45,15 +45,27 @@
   <a-obj-model id="female1Model1" src="#obj-female1" scale="0.03 0.03 0.03" position="-28.34477 0 -9.99715" rotation="0 24 0"></a-obj-model>
   <a-obj-model id="female1Model2" src="#obj-female1" scale="0.03 0.03 0.03" position="-6.92892 0 6.22416" rotation="0 90 0"></a-obj-model>
   <a-gltf-model id="cityModel" src="#city" position="161.41489 -5 149.42627" scale="0.8 1.5 0.8"></a-gltf-model>
-  <a-obj-model id="rackModel" src="#rack" position="-4.08212 0.13317 -12.68356" scale="0.0025 0.0025 0.0025" rotation="-90 0 -90"></a-obj-model>
+  <a-obj-model id="rackModel1" src="#rack" position="-4.08212 0 -12.68356" scale="0.0025 0.0025 0.0025" rotation="-90 0 -90"></a-obj-model>
+  <a-obj-model id="rackModel2" src="#rack" position="-23.06757 0 -17.4599" scale="0.0025 0.0025 0.0025" rotation="-90 20 -90"></a-obj-model>
+  <a-obj-model id="rackModel3" src="#rack" position="1.38436 0 12.45386" scale="0.004 0.0025 0.004" rotation="-90 -90 -90"></a-obj-model>
+  <a-obj-model id="rackModel4" src="#rack" position="19.43176 0 2.95674" scale="0.002 0.002 0.002" rotation="-90 -90 -90"></a-obj-model>
+  <a-obj-model id="rackModel5" src="#rack" position="-33.61924 0 5.09665" scale="0.0025 0.0025 0.0025" rotation="-90 180 -90"></a-obj-model>
+
+<!-- Boxes -->
+<a-box id="wallZone" position="1.13504 24.95153 -14.19582" width="2" height="5" depth="0.1" visible="false" scale="7.33765 10.11334 1"></a-box>
+<a-box id="wallZone1" position="3.21442 34.7176 11.49146" width="2" height="5" depth="0.1" visible="false" scale="7.33765 13.66977 1" rotation="0 -90 0"></a-box>
+<a-box id="wallZone2" position="-12.64411 40.88774 3.80877" width="2" height="5" depth="0.1" visible="false" scale="3 17 1.01516" rotation="0 180 0"></a-box>
+
+<!-- Texte qui sera affiché -->
+<a-text class="network-word" position="0 0 0" rotation="0 0 0"></a-text>
 
 
   <!-- Sol -->
   <a-plane 
     position="0 0 0"
     rotation="-90 0 0"
-    width="1000"
-    height="1000"
+    width="9000"
+    height="9000"
     material="color: #000000; metalness: 0.9; roughness: 0.05; emissive: #111111; emissiveIntensity: 0.3; reflectivity: 0.8">
   </a-plane>
 

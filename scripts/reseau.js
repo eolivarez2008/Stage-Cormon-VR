@@ -12,7 +12,7 @@ const CONFIG = {
   envLightIntensity: 10,       // Intensité de la lumière directionnelle globale
   ambientIntensity: 10,        // Intensité de la lumière ambiante
   sphereHeight: 3,           // Hauteur fixe du déplacement des sphères
-  linkCount: 20               // Nombre de sphères animées actives simultanément
+  linkCount: 30               // Nombre de sphères animées actives simultanément
 };
 
 const scene = document.querySelector('a-scene');
@@ -159,4 +159,70 @@ function animateSpheres() {
   });
   requestAnimationFrame(animateSpheres);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // On attend que la scène A-Frame soit prête
+  const scene = document.querySelector('a-scene');
+  if (!scene) {
+    console.error("❌ A-Frame scene non trouvée !");
+    return;
+  }
+
+  scene.addEventListener('loaded', () => {
+    fetch('../data/network_words.json')
+      .then(res => res.json())
+      .then(data => {
+        const words = data.words;
+        const walls = document.querySelectorAll('[id^="wallZone"]');
+        const textElements = [];
+
+        walls.forEach((wall) => {
+          const word = words[Math.floor(Math.random() * words.length)].toUpperCase();
+          const vertical = word.split('').join('\n');
+
+          const txt = document.createElement('a-text');
+          txt.setAttribute('value', vertical);
+          txt.setAttribute('color', '#00FFD1');
+          txt.setAttribute('align', 'center');
+          txt.setAttribute('font', 'https://cdn.aframe.io/fonts/Roboto-msdf.json');
+          txt.setAttribute('shader', 'msdf');
+          txt.setAttribute('side', 'double');
+
+          // Taille automatique en fonction du mur
+          const wallScale = wall.getAttribute('scale');
+          const wallHeight = wallScale ? wallScale.y * 2 : 5; // par défaut 5 si pas de scale
+          txt.setAttribute('width', wallScale.x * 1.5);
+          txt.object3D.scale.set(1, wallHeight / 6, 1);
+
+          // Positionnement exact sur le mur
+          const wallPos = wall.object3D.position.clone();
+          const wallRot = wall.object3D.rotation.clone();
+
+          txt.object3D.position.set(wallPos.x, wallPos.y, wallPos.z);
+          txt.object3D.rotation.copy(wallRot);
+
+          // Décalage vers l'extérieur du mur
+          const forward = new THREE.Vector3(0, 0, 1);
+          forward.applyEuler(wallRot);
+          txt.object3D.position.addScaledVector(forward, 0.3);
+
+          scene.appendChild(txt);
+          textElements.push({ el: txt, wall });
+
+          console.log(`✅ Mot ajouté sur ${wall.id}: ${word}`);
+        });
+
+        // === 🔁 Changement automatique toutes les 10 secondes ===
+        setInterval(() => {
+          textElements.forEach(({ el }) => {
+            const newWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+            const vertical = newWord.split('').join('\n');
+            el.setAttribute('value', vertical);
+          });
+        }, 10000);
+      })
+      .catch(err => console.error('❌ Erreur chargement des mots réseau:', err));
+  });
+});
+
 animateSpheres();
