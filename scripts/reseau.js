@@ -55,6 +55,8 @@ const textureOBJ = createMatrixTexture(CONFIG.matrixColorOBJ);
 // === APPLICATION DES TEXTURES ===
 document.querySelectorAll('a-gltf-model, a-obj-model').forEach(model => {
   model.addEventListener('model-loaded', () => {
+    if (model.id === 'iphone') return;
+
     const isOBJ = model.tagName === 'A-OBJ-MODEL';
     const texture = isOBJ ? textureOBJ : textureGLB;
 
@@ -75,6 +77,7 @@ document.querySelectorAll('a-gltf-model, a-obj-model').forEach(model => {
     });
   });
 });
+
 
 // === LUMIÈRES ===
 const envLight = document.createElement('a-entity');
@@ -164,7 +167,7 @@ scene.addEventListener('loaded', () => {
   fetch('../data/network_words.json')
     .then(res => res.json())
     .then(data => {
-      const words = data.words.filter(w => w.length <= 7); // max 7 caractères
+      const words = data.words.filter(w => w.length <= 7); 
       const walls = document.querySelectorAll('[id^="wallZone"]');
 
       // Palette de couleurs futuristes / Matrix
@@ -175,8 +178,8 @@ scene.addEventListener('loaded', () => {
         const word = words[Math.floor(Math.random() * words.length)].toUpperCase();
         const vertical = word.split('').join('\n');
 
-        const TEXT_WIDTH = 6 + index; // tu peux ajuster globalement
-        const TEXT_SCALE = 20 + index; // idem
+        const TEXT_WIDTH = 6 + index;
+        const TEXT_SCALE = 20 + index;
 
         const txt = document.createElement('a-text');
         txt.setAttribute('value', vertical);
@@ -185,7 +188,7 @@ scene.addEventListener('loaded', () => {
         txt.setAttribute('shader', 'msdf');
         txt.setAttribute('side', 'double');
         txt.setAttribute('color', color);
-        txt.setAttribute('opacity', 0.2); // semi-transparent
+        txt.setAttribute('opacity', 0.2);
         txt.setAttribute('material', {
           color: color,
           opacity: 0.4,
@@ -266,9 +269,146 @@ scene.addEventListener('loaded', () => {
         setTimeout(cycleChange, 1000 + Math.random() * 5000);
       });
     })
-    .catch(err => console.error('❌ Erreur chargement des mots réseau:', err));
+    .catch(err => console.error('Erreur chargement des mots réseau:', err));
 });
 
-
-
 animateSpheres();
+
+const videoEntity = document.querySelector('#cartVideo');
+const videoEl = document.querySelector('#CART_SECRET');
+
+// Clic sur la vidéo : toggle play/visible
+videoEntity.addEventListener('click', () => {
+  if (!videoEntity.getAttribute('visible')) {
+    videoEntity.setAttribute('visible', true);
+    videoEl.play();
+  } else {
+    videoEntity.setAttribute('visible', false);
+    videoEl.pause();
+    videoEl.currentTime = 0;
+  }
+});
+
+const iphone = document.querySelector('#iphone');
+const camera = document.querySelector('a-camera');
+const video = document.querySelector('#phoneVideo');
+
+let phoneVisible = true;
+let phoneClone = null;
+let videoPlaying = false;
+
+// -----------------------------------------------
+// Clic sur le téléphone au sol
+// -----------------------------------------------
+iphone.addEventListener('click', () => {
+  if (phoneVisible) {
+    iphone.setAttribute('visible', false);
+    showPhone();
+  }
+});
+
+// -----------------------------------------------
+// Afficher le téléphone devant la caméra
+// -----------------------------------------------
+function showPhone() {
+  phoneVisible = false;
+
+  const distance = 1.5;      // distance devant la caméra
+  const scale = 0.202;       // taille globale du téléphone
+  const posY = -1.15;        // hauteur devant la caméra
+
+  // Clone du téléphone
+  phoneClone = iphone.cloneNode(true);
+  phoneClone.setAttribute('id', 'iphoneClone');
+  phoneClone.classList.add('clickable');
+
+  // Wrapper attaché à la caméra
+  const wrapper = document.createElement('a-entity');
+  wrapper.setAttribute('id', 'phoneWrapper');
+  camera.appendChild(wrapper);
+  wrapper.appendChild(phoneClone);
+
+  // Taille et position
+  phoneClone.setAttribute('scale', `${scale} ${scale} ${scale}`);
+  phoneClone.setAttribute('position', `0 ${posY} -${distance}`);
+  phoneClone.setAttribute('rotation', '0 0 0');
+
+  // Animation de montée
+  phoneClone.setAttribute('animation__rise', {
+    property: 'position',
+    from: `0 -1 -${distance}`,
+    to: `0 ${posY} -${distance}`,
+    dur: 800,
+    easing: 'easeOutElastic'
+  });
+
+  // Clique sur le téléphone affiché
+  phoneClone.addEventListener('click', onPhoneClick);
+}
+
+// -----------------------------------------------
+// Clic sur le téléphone flottant
+// -----------------------------------------------
+function onPhoneClick() {
+  if (!videoPlaying) {
+    playVideoOnPhone();
+  } else {
+    stopVideoAndHidePhone();
+  }
+}
+
+// -----------------------------------------------
+// Lancer la vidéo sur le téléphone
+// -----------------------------------------------
+function playVideoOnPhone() {
+  videoPlaying = true;
+
+  // Crée l'écran vidéo avec les mêmes dimensions que ton test
+  const videoScreen = document.createElement('a-video');
+  videoScreen.setAttribute('id', 'videoScreen');
+  videoScreen.setAttribute('src', '#phoneVideo');
+  videoScreen.setAttribute('width', 0.5); 
+  videoScreen.setAttribute('height', 0.3);
+  videoScreen.setAttribute('position', '0 0.01949 -1.2'); 
+  videoScreen.setAttribute('scale', '1.95374 4.78038 1');
+  videoScreen.setAttribute('rotation', '0 0 0');
+
+  // Attache au wrapper devant la caméra
+  const wrapper = document.querySelector('#phoneWrapper');
+  wrapper.appendChild(videoScreen);
+
+  // Assure que la vidéo HTML est prête
+  video.pause();
+  video.currentTime = 0;
+  video.addEventListener('canplay', () => {
+    video.play();
+  }, { once: true });
+  if (video.readyState >= 2) video.play();
+}
+
+// -----------------------------------------------
+// Fermer la vidéo et ranger le téléphone
+// -----------------------------------------------
+function stopVideoAndHidePhone() {
+  videoPlaying = false;
+  video.pause();
+  video.currentTime = 0;
+
+  const videoScreen = document.querySelector('#videoScreen');
+  if (videoScreen) videoScreen.remove();
+
+  phoneClone.setAttribute('animation__down', {
+    property: 'position',
+    to: '0 -1 -1.2',
+    dur: 800,
+    easing: 'easeInOutQuad'
+  });
+
+  setTimeout(() => {
+    const wrapper = document.querySelector('#phoneWrapper');
+    if (wrapper) wrapper.remove();
+    phoneClone = null;
+    iphone.setAttribute('visible', true);
+    phoneVisible = true;
+  }, 900);
+}
