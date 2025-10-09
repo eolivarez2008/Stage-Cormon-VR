@@ -22,6 +22,7 @@
 | boyStanding | | 08/10/2025 | https://www.sweethome3d.com/models/reallusion/boyStanding.zip | CC BY 3.0 US |
 | girlStanding | | 08/10/2025 | https://www.sweethome3d.com/models/reallusion/girlStanding.zip | CC BY 3.0 US |
 | Network Server Rack | Khoa Nguyen | 08/10/2025 | https://sketchfab.com/3d-models/network-server-rack-3b15fb8779274844b54e63a40194d450 | CC Attribution |
+| Mobile phone | Alain Sorazu | 09/10/2025 | https://sketchfab.com/3d-models/mobile-phone-4a97a633ad584ba19110e1730f7744c1 | CC Attribution-ShareAlike |
 
 ## Sons
 
@@ -32,6 +33,7 @@
 | earth rumble | Reitanna (Freesound) | 07/10/2025 | https://pixabay.com/sound-effects/earth-rumble-6953/ | Content License |
 | Winter Wind | DRAGON-STUDIO | 06/10/2025 | https://pixabay.com/sound-effects/winter-wind-402331/ | Content License |
 | Underwater Ambience | DRAGON-STUDIO | 02/10/2025 | https://pixabay.com/sound-effects/underwater-ambience-376890/ | Content License |
+| exemple_audio | Matthieu Farcot | 09/10/2025 | https://github.com/matthieu-farcot/TCP-Dump-Music/blob/master/exemple_audio.mp3 | | 
 
 ## Vidéos
 
@@ -39,6 +41,7 @@
 | -- | -- | -- | -- | -- |
 | Wolf | | 03/09/2025 | https://vr.lycee-cormontaigne-metz.fr/resources/contenuinfo/wolf.mp4 | |
 | cart | | 07/10/2025 | https://vr.lycee-cormontaigne-metz.fr/resources/videos/cart.mp4 | |
+| reseau | me | 09/10/2025 | https://www.veed.io/ai-studio/73883990-a9c8-4ed3-a129-c805b9805083 | |
 
 ## Images
 
