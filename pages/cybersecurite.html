@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>cybersecurite</title>
+  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  <script>
+    if (window.AFRAME && AFRAME.THREE) {
+      window.THREE = AFRAME.THREE;
+    }
+  </script>  
+</head>
+<body>
+  <a-scene rideau-move>
+  
+    <a-assets>
+      <a-asset-item id="road" src="../objects-glb/street_road.glb"></a-asset-item>
+      <a-asset-item id="barre-obj" src="../objects-obj/rideau/barre/barre.obj"></a-asset-item>
+      <a-asset-item id="rideau-droite-obj" src="../objects-obj/rideau/rideau-droite/rideau-droite.obj"></a-asset-item>
+      <a-asset-item id="rideau-gauche-obj" src="../objects-obj/rideau/rideau-gauche/rideau-gauche.obj"></a-asset-item>
+      <a-asset-item id="barriere" src="../objects-glb/concrete_barrier.glb"></a-asset-item>
+      <a-asset-item id="arch" src="../objects-glb/temple_arch-3dview.glb"></a-asset-item>
+      <a-asset-item id="kart" src="../objects-glb/standard_kart.glb"></a-asset-item>
+    </a-assets>
+
+    <a-sky 
+        src="../background/space.jpg">
+    </a-sky>
+
+    <a-entity gltf-model="../objects-glb/street_road.glb" scale="0.53 0.3 0.1" position="-2.29038 -0.08 -59.94616"></a-entity>
+
+    <a-entity id="rideau-1" position="0 0 5">
+        <a-entity gltf-model="../objects-glb/temple_arch-3dview.glb" scale="0.52926 0.356 0.22" position="0 0 -11.75755"></a-entity>
+        <a-obj-model src="#barre-obj"  scale="0.001 0.001 0.0006" position="0 4.5 -12.40503" rotation="-90 0 0"></a-obj-model> 
+        <a-obj-model class="clickable rideau-gauche" src="#rideau-gauche-obj" scale="0.001 0.001 0.0006" position="4.23249 -0.03135 -12.40503" rotation="-90 0 0"></a-obj-model>
+        <a-obj-model class="clickable rideau-droite" src="#rideau-droite-obj" scale="0.001 0.001 0.0006" position="-4.23249 -0.03135 -12.40503" rotation="-90 0 0"></a-obj-model>
+    </a-entity>
+
+    <a-entity id="rideau-2" position="0 0 -5">
+        <a-entity gltf-model="../objects-glb/temple_arch-3dview.glb" scale="0.52926 0.356 0.22" position="0 0 -11.75755"></a-entity>
+        <a-obj-model src="#barre-obj"  scale="0.001 0.001 0.0006" position="0 4.5 -12.40503" rotation="-90 0 0"></a-obj-model> 
+        <a-obj-model class="clickable rideau-gauche" src="#rideau-gauche-obj" scale="0.001 0.001 0.0006" position="4.23249 -0.03135 -12.40503" rotation="-90 0 0"></a-obj-model>
+        <a-obj-model class="clickable rideau-droite" src="#rideau-droite-obj" scale="0.001 0.001 0.0006" position="-4.23249 -0.03135 -12.40503" rotation="-90 0 0"></a-obj-model>
+    </a-entity>
+
+
+    <a-entity gltf-model="#barriere" scale="5.59 4 4" position="3.9827 0 2.5"></a-entity>
+    <a-entity gltf-model="#barriere" scale="6 4 4" position="1.34541 0 2.5"></a-entity>
+    <a-entity gltf-model="#barriere" scale="6 4 4" position="-1.369 0 2.5"></a-entity>
+    <a-entity gltf-model="#barriere" scale="5.59 4 4" position="-3.98872 0 2.5"></a-entity>
+      
+    <a-camera id="player" position="0 1.6 0" wasd-controls="enabled: false">
+    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+    <a-entity id="kart-entity" gltf-model="../objects-glb/standard_kart.glb" scale="0.1 0.1 0.15" position="0.10774 -1.58558 -0.25334" rotation="-16.208403066455862 178.8751318086625 -3.9075721627922144"></a-entity>
+    </a-camera>
+
+    <!-- Bouton Accueil en HTML/CSS -->
+    <button id="btn-home">Accueil</button>
+
+</a-scene>
+
+<script type="module" src="../scripts/cybersecurite.js"></script>
+
+<script>
+    document.getElementById('btn-home').addEventListener('click', () => {
+        window.location.href = '../'; // Chemin vers la page d'accueil
+    });
+</script>
+<style>
+#btn-home {
+    position: fixed;      
+    top: 20px;   
+    right: 20px;      
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;       
+    transition: background-color 0.3s;
+}
+
+#btn-home:hover { background-color: rgba(0, 0, 0, 0.85); }
+</style>
+
+</body>
+</html>
