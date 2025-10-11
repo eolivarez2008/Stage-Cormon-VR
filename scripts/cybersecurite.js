@@ -75,17 +75,20 @@ setTimeout(() => {
   document.querySelectorAll('a-entity').forEach(el => applyMatrixEffectToEntity(el));
 }, 2000);
 
+
+
 console.log("Script rideaux chargé");
 
 AFRAME.registerComponent('rideau-move', {
   init: function () {
     const player = document.querySelector('#player');
+    const rideaux = document.querySelectorAll('[id^="rideau-"]');
     let moving = false;
     let moveTarget = new THREE.Vector3();
-    const speed = 5.0;
+    const speed = 5.0; // vitesse de la caméra
+    let lastOpenedIndex = -1; // index du dernier rideau ouvert
 
-    const rideaux = document.querySelectorAll('[id^="rideau-"]');
-    rideaux.forEach(groupe => {
+    rideaux.forEach((groupe, idx) => {
       const gauche = groupe.querySelector('.rideau-gauche');
       const droite = groupe.querySelector('.rideau-droite');
       if (!gauche || !droite) return;
@@ -93,22 +96,48 @@ AFRAME.registerComponent('rideau-move', {
       let ouvert = false;
 
       function ouvrirFermerEtAvancer() {
-        if (moving) return;
+        // Ignore clics si en mouvement
+        if (moving) {
+          console.log("Déjà en déplacement, click ignoré");
+          return;
+        }
+
+        // Ignore clics sur les rideaux déjà ouverts ou visités
+        if (idx < lastOpenedIndex) {
+          console.log("Rideau précédent cliqué, ignoré :", groupe.id);
+          return;
+        }
 
         console.log("Click sur rideau :", groupe.id);
         console.log("Position actuelle caméra :", player.object3D.position);
 
-        // Ouvre / ferme rideau
+        // --- Fermer tous les autres rideaux ---
+        rideaux.forEach((otherGroupe, otherIdx) => {
+          if (otherGroupe !== groupe) {
+            const L = otherGroupe.querySelector('.rideau-gauche');
+            const R = otherGroupe.querySelector('.rideau-droite');
+            if (!L || !R) return;
+            L.setAttribute('animation', 'property: scale; to: 0.001 0.001 0.0006; dur: 1000; easing: easeOutQuad');
+            R.setAttribute('animation', 'property: scale; to: 0.001 0.001 0.0006; dur: 1000; easing: easeOutQuad');
+            console.log("Rideau fermé :", otherGroupe.id);
+          }
+        });
+
+        // --- Ouvre rideau cliqué (plus jamais refermable) ---
         if (!ouvert) {
           gauche.setAttribute('animation', 'property: scale; to: 0.0001 0.001 0.0006; dur: 1000; easing: easeOutQuad');
           droite.setAttribute('animation', 'property: scale; to: 0.0001 0.001 0.0006; dur: 1000; easing: easeOutQuad');
-        } else {
-          gauche.setAttribute('animation', 'property: scale; to: 0.001 0.001 0.0006; dur: 1000; easing: easeOutQuad');
-          droite.setAttribute('animation', 'property: scale; to: 0.001 0.001 0.0006; dur: 1000; easing: easeOutQuad');
-        }
-        ouvert = !ouvert;
+          console.log("Rideau ouvert :", groupe.id);
 
-        // Calcul position cible
+          // désactive le clic sur ce rideau
+          gauche.style.pointerEvents = 'none';
+          droite.style.pointerEvents = 'none';
+
+          ouvert = true;
+          lastOpenedIndex = idx; // mémorise le rideau ouvert
+        }
+
+        // --- Calcul position cible pour la caméra ---
         const groupPos = new THREE.Vector3();
         groupe.object3D.getWorldPosition(groupPos);
         moveTarget.set(0, 1.6, groupPos.z - 10);
@@ -116,10 +145,12 @@ AFRAME.registerComponent('rideau-move', {
         console.log("Position cible :", moveTarget);
       }
 
+      // attache les clics
       gauche.addEventListener('click', ouvrirFermerEtAvancer);
       droite.addEventListener('click', ouvrirFermerEtAvancer);
     });
 
+    // tick : déplace la caméra vers la cible
     this.tick = function (time, timeDelta) {
       if (!moving) return;
 

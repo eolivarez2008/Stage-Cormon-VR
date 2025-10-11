@@ -6,15 +6,12 @@
 | -- | -- | -- | -- | -- |
 | Cartoon Manta Ray | Jungle Jim | 01/10/2025 | https://sketchfab.com/3d-models/cartoon-manta-ray-animated-3f56886ab5fe4c7b8b151ea0974bf5b3 | CC Attribution |
 | Guppy Fish | BlueMesh | 01/10/2025 | https://sketchfab.com/3d-models/guppy-fish-21e14e4b961e406385539f79eacdb1dc | CC Attribution |
-| Primary Ion Drive | indierocktopus | 02/09/2025 | https://sketchfab.com/3d-models/primary-ion-drive-d3f50a66fee74c6588dd9bc92f7fe7b3 | CC Attribution |
-| Reflective Ball | BuntyS | 03/09/2025 | https://sketchfab.com/3d-models/reflective-ball-4085407d6da54335b325d76e20ec8c48 | CC Attribution|
 | 2010 Flat screen TV | Warkarma | 03/09/2025 | https://sketchfab.com/3d-models/2010-flat-screen-tv-7d46ca5855b0496dbb289cbe7366c850 | CC Attribution |
 | Sci-Fi portal - Asset | Samuel F. Johanns (Oneironauticus) | 06/10/2025 | https://sketchfab.com/3d-models/sci-fi-portal-asset-6a991ae1eb75407d8a4848e1aecc4b14 | CC Attribution |
 | round platform | n0stardust | 06/10/2025 | https://sketchfab.com/3d-models/round-platform-64de8f896e3e40e4a1e8a67d01620ac1 | CC Attribution |
 | Rotating Light Platform Final | Phillip Stephens | 06/10/2025 | https://sketchfab.com/3d-models/rotating-light-platform-final-1563d863485a46d5a244df12f0f6123c | CC Attribution |
 | Roter Kamm, Impact crater, Namibia | Matthias Ebert | 06/10/2025 | https://sketchfab.com/3d-models/roter-kamm-impact-crater-namibia-3a1a686c3dd14f1a8ce0a0ae0ccf8588 | CC Attribution-NonCommercial-ShareAlike |
 | Wandering Asteroids Of Andromeda | ARCTIC WOLVES™ | 07/10/2025 | https://sketchfab.com/3d-models/wandering-asteroids-of-andromeda-6a8e84e0fdea43628b8b3ab85b130281 | CC Attribution |
-| Death Star, Etoile de la mort | Loire Dessin Patrimoine 3D | 07/10/2025 | https://sketchfab.com/3d-models/death-star-etoile-de-la-mort-5bbbb1bc4fcc430e83e1fc4e5ef45fad | CC Attribution |
 | moon | RenderX | 07/10/2025 | https://sketchfab.com/3d-models/moon-26cc0b7878bb4d919b68e2be399db466 | CC Attribution |
 | City | Mateusz Woliński | 08/10/2025 | https://sketchfab.com/3d-models/city-1f50f0d6ec5a493d8e91d7db1106b324 | CC Attribution |
 | female03 | | 08/10/2025 | https://www.sweethome3d.com/models/reallusion/female03.zip | CC BY 3.0 US |
@@ -23,6 +20,8 @@
 | girlStanding | | 08/10/2025 | https://www.sweethome3d.com/models/reallusion/girlStanding.zip | CC BY 3.0 US |
 | Network Server Rack | Khoa Nguyen | 08/10/2025 | https://sketchfab.com/3d-models/network-server-rack-3b15fb8779274844b54e63a40194d450 | CC Attribution |
 | Mobile phone | Alain Sorazu | 09/10/2025 | https://sketchfab.com/3d-models/mobile-phone-4a97a633ad584ba19110e1730f7744c1 | CC Attribution-ShareAlike |
+| Tower and Castle Walls | LucasPresoto | 10/10/2025 | https://sketchfab.com/3d-models/tower-and-castle-walls-fca85f8450604e6f98952a2739f92672 | CC Attribution |
+| Street road | Low poly 3d Models | 10/10/2025 | https://sketchfab.com/3d-models/street-road-a01b47f299b24ac99a1dcd8e2111364b | CC Attribution |
 
 ## Sons
 
@@ -48,10 +47,8 @@
 | Nom | Créateur | Date | Lien | License |
 | -- | -- | -- | -- | -- |
 | Golden Gate Hills 4K | Dimitrios Savva - Jarod Guest | 03/09/2025 | https://polyhaven.com/a/golden_gate_hills | Creative Commons Zero |
-| Panorama du ciel bleu foncé avec les nuages du Cirrus | Shutterstock | 29/09/2025 | https://www.shutterstock.com/fr/image-photo/dark-blue-sunset-sky-panorama-cirrus-2104178486 |  |
 | Panorama ocean | | 29/09/2025 | | |
 | HDR Blue Nebulae | | 06/10/2025 | https://www.spacespheremaps.com/wp-content/uploads/HDR_blue_nebulae-1.hdr | |
-
 
 ## Autres
 
@@ -63,3 +60,5 @@
 | 06/10/2025 | https://www.weodeo.com/wp-content/uploads/2024/06/quest-ce-quun-reseau-informatique-dentreprise.webp |
 | 06/10/2025 | https://media.istockphoto.com/id/537331500/fr/photo/le-code-de-programmation-fond-abstrait-technologie-de-logiciels-deve.jpg?s=612x612&w=0&k=20&c=jyLxg_T9ylG1Qr-L4toeUaqe2dXkGlEuaPWNL9SZZWs= |
 | 06/10/2025 | https://www.google.com/imgres?q=cormontaigne&imgurl=https%3A%2F%2Fcpge.lycee-cormontaigne-metz.fr%2Fassets%2Fimg%2Fcormontaigne.jpg&imgrefurl=https%3A%2F%2Fcpge.lycee-cormontaigne-metz.fr%2F&docid=HRK7li6lU0vaaM&tbnid=ORmfaRBs_sdJ2M&vet=12ahUKEwjj_9ixpZKQAxVjfKQEHS5NOV0QM3oECCAQAA..i&w=1366&h=768&hcb=2&ved=2ahUKEwjj_9ixpZKQAxVjfKQEHS5NOV0QM3oECCAQAA |
+
+> Tous autres élèments utlisés provient de nous mêmes.

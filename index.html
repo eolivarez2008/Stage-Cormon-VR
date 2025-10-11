@@ -3,130 +3,194 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Découvert de la 3D</title>
+  <title>Découverte de la WebGL</title>
   <link rel="icon" href="./CCC.svg" />
   <style>
     :root {
-      --bg:#0a422e;
-      --card:#10231a;
-      --accent:#06b6d4;
-      color-scheme:#dbeafe;
+      --bg:#121212;
+      --fg:#e5e7eb;
+      --card:#1e1e1e;
+      --border:#2a2a2a;
+      --hover:#2f2f2f;
+      --accent:#3b82f6; 
     }
-    html,body {
-      height:100%; margin:0;
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
-      background-color: var(--bg);
-      color:#e6eef8;
-    }
-    .wrap{max-width:1100px;margin:40px auto;padding:20px}
-    header{text-align:center;margin-bottom:32px}
-    h1{font-size:30px;margin-bottom:10px}
-    p.lead{max-width:700px;margin:0 auto;opacity:.85;font-size:15px}
 
-    .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:20px;
+    html,body {
+      height:100%;
+      margin:0;
+      font-family:"Inter",system-ui,sans-serif;
+      background-color:var(--bg);
+      color:var(--fg);
     }
-    .card {
-      border-radius:12px;
-      padding:16px;
+
+    .wrap {
+      max-width:1400px;
+      margin:60px auto;
+      padding:0 40px 60px;
+    }
+
+    header {
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    h1 {
+      font-size:clamp(26px,3vw,36px);
+      font-weight:600;
+      margin-bottom:12px;
+      color:var(--accent);
+    }
+
+    p.lead {
+      font-size:clamp(14px,1.2vw,17px);
+      color:var(--fg);
+      max-width:800px;
+      margin:0 auto 22px;
+      line-height:1.6;
+    }
+
+    .github-btn {
+      display:inline-block;
+      margin-top:6px;
+      padding:10px 16px;
+      border-radius:8px;
+      color:var(--fg);
+      background-color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      transition:opacity .25s;
+    }
+
+    .github-btn:hover {
+      opacity:0.85;
+    }
+
+    main {
       display:flex;
       flex-direction:column;
-      transition:transform .25s, box-shadow .25s;
-      background-color: var(--card);
+      gap:22px;
     }
-    .card:hover {
-      transform:translateY(-6px);
-      box-shadow:0 14px 32px rgba(2,6,23,.6);
+
+    .item {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      background-color:var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:22px 28px;
+      transition:background .25s,transform .25s;
     }
+
+    .item:hover {
+      background-color:var(--hover);
+      transform:translateX(6px);
+    }
+
     .thumb {
-      height:150px;
+      width:160px;
+      height:100px;
       border-radius:8px;
       background-size:cover;
       background-position:center;
-      margin-bottom:12px;
+      flex-shrink:0;
     }
-    .title {font-weight:600;font-size:18px;margin-bottom:6px}
-    .meta {font-size:14px;opacity:.75;flex-grow:1}
+
+    .info {
+      flex:1;
+      min-width:0;
+    }
+
+    .title {
+      font-weight:600;
+      font-size:clamp(17px,1.5vw,20px);
+      margin-bottom:6px;
+      color:var(--accent);
+    }
+
+    .meta {
+      font-size:clamp(14px,1.1vw,16px);
+      color:var(--fg);
+      line-height:1.4;
+    }
+
     .btn {
-      margin-top:12px;
-      padding:8px 12px;
+      font-size:clamp(14px,1vw,15px);
+      padding:12px 24px;
+      border:none;
       border-radius:8px;
-      background:linear-gradient(90deg,var(--accent),#4ade80);
-      color:#04201a;
-      text-align:center;
-      font-weight:600;
+      color:var(--fg);
+      background-color:var(--accent);
       text-decoration:none;
-    }
-    footer {
-      text-align:center;
-      margin-top:40px;
-      font-size:14px;
-      opacity:.7;
-      margin-bottom: 20px;
-    }
-    .github-btn {
-      display:inline-block;
-      margin-top:16px;
-      padding:10px 14px;
-      border-radius:10px;
-      background: black;
-      color:#e6eef8;
       font-weight:600;
-      text-decoration:none;
-      transition:background .25s;
+      transition:opacity .25s;
+      flex-shrink:0;
     }
-    .github-btn:hover {background:#374151}
-    @media(max-width:640px){
-      h1{font-size:22px}
-      .thumb{height:120px}
+
+    .btn:hover {
+      opacity:0.85;
     }
+
+@media(max-width:900px){
+  .item {
+    flex-direction:column;
+    align-items:flex-start;
+    padding:18px;
+    width:90%;
+  }
+
+  .thumb {
+    width:100%;
+    height:180px;
+  }
+
+  .btn {
+    align-self:center; 
+    margin-top:10px;
+  }
+}
+
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>Découverte de la Webgl - OLIVAREZ Emilien</h1>
+      <h1>Découverte de la WebGL - OLIVAREZ Emilien</h1>
       <p class="lead">
-        Ce site présente un projet réalisé durant mon stage afin de découvrir la 
-        réalité virtuelle et la 3D. Explorez différentes scènes interactives 
-        créées avec A-Frame / Threejs et des modèles 3D.
+        Projet réalisé durant mon stage pour explorer la réalité virtuelle et la 3D. 
+        Découvrez plusieurs scènes interactives créées avec A-Frame et Three.js.
       </p>
+      <a class="github-btn" href="https://github.com/eolivarez2008/Stage-Cormon-VR" target="_blank">
+        Voir le projet sur GitHub
+      </a>
     </header>
 
-    <main>
-      <div class="grid" id="pagesGrid"></div>
-    </main>
-
-    <footer>
-      <a class="github-btn" href="https://github.com/eolivarez2008/Stage-Cormon-VR" target="_blank">Voir le projet sur GitHub</a>
-    </footer>
+    <main id="pagesList"></main>
   </div>
 
   <script>
     const pages = [
-      { href:'./pages/ocean.html', title:'Scène océanique avec des poissons', thumb:'./background/sea.jpg', desc:'Scène sous-marine avec poissons et ambiance sonore.' },
-      { href:'./pages/desert-cormon.html', title:'Scène désertique avec texte cormon et vidéo', thumb:'./background/golden_gate_hills_4k.jpg', desc:'Scène désertique avec un texte "Cormontaigne" qui reflete le background et une vidéo plaquée sur une tv.' },
-      { href:'./pages/desert-salle.html', title:'Scène désertique avec une salle qui tourne', thumb:'./background/golden_gate_hills_4k.jpg', desc:'Salle de cours ds un desert avec une rotation.' },
-      { href:'./pages/ddfpt.html', title:'Scène scolaire avec du texte cormon full miroir', thumb:'./background/salle.jpg', desc:'Salle intérieure avec un texte "Cormontaigne" qui reflète le décor.' },
-      { href:'./pages/transition.html', title:'Scène désertique avec des transitions', thumb:'./background/golden_gate_hills_4k.jpg', desc:'Scène désertique avec un changement de scène et des elements.' },
-      { href:'./pages/bac-ciel.html', title:"Scène spatiale d'accueil du lycée", thumb:'./background/space.jpg', desc:"Scène dans l'espace avec des portails vers d'autre mondes." },
-      { href:'./pages/reseau.html', title:"Scène matrix",  thumb:'./images/cormon.jpg', desc:"Scène matrix qui présente la partie réseau du lycée." },
-      { href:'./pages/cybersecurite.html', title:"Scène theatre",  thumb:'', desc:"" }
+      { href:'./pages/ocean.html', title:'Scène océanique', thumb:'./background/sea.jpg', desc:'Scène sous-marine avec poissons et ambiance sonore.' },
+      { href:'./pages/scene-desertique.html', title:'Scène désertique', thumb:'./background/golden_gate_hills_4k.jpg', desc:'Scène désertique avec des éléments reflétant le décor, une salle de classe en rotation et une vidéo sur écran TV.' },
+      { href:'./pages/bac-ciel.html', title:'Scène spatiale', thumb:'./images/scene-spatial.png', desc:'Scène sur une roche spatiale avec 6 portails présentant le bac pro CEL.' },
+      { href:'./pages/reseau.html', title:'Scène Matrix - Réseaux', thumb:'./images/matrix-reseau.png', desc:'Scène urbaine inspirée de Matrix représentant le réseau informatique.' },
+      { href:'./pages/cybersecurite.html', title:'Scène Matrix - Cybersécurité', thumb:'./background/space.jpg', desc:'Scène illustrant la cybersécurité et le système TSA des cadenas.' }
     ];
 
-    const grid = document.getElementById('pagesGrid');
+    const list = document.getElementById('pagesList');
     pages.forEach(p => {
       const div = document.createElement('div');
-      div.className = 'card';
+      div.className = 'item';
       div.innerHTML = `
         <div class="thumb" style="background-image:url('${p.thumb}')"></div>
-        <div class="title">${p.title}</div>
-        <div class="meta">${p.desc}</div>
-        <a class="btn" href="${p.href}">Voir la page</a>
+        <div class="info">
+          <div class="title">${p.title}</div>
+          <div class="meta">${p.desc}</div>
+        </div>
+        <a class="btn" href="${p.href}">Ouvrir</a>
       `;
-      grid.appendChild(div);
+      list.appendChild(div);
     });
   </script>
 </body>
